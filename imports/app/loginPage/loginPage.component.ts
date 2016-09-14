@@ -13,10 +13,17 @@ import template from "./loginPage.component.html";
   template: template,
 })
 export class LoginPage {
+  signInForm: Object = {
+  "email":"po@po.po",
+  "password":"popopo"
+  };
   /**
   * @method constructor
   */
   constructor () {
 
+  }
+  signIn () {
+  console.log(this.signInForm);
   }
 }
