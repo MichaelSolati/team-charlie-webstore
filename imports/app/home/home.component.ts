@@ -13,6 +13,16 @@ import template from "./home.component.html";
   template: template,
 })
 export class Home {
+deals: Array<Object> = [{
+"itemName":"Donuts",
+"price":"$3.99"
+}, {
+"itemName":"Bagels",
+"price":"$1.99"
+}, {
+"itemName":"Coffee",
+"price":"$0.99"
+}];
   /**
   * @method constructor
   */
