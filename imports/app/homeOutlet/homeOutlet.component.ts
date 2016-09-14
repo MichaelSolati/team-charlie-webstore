@@ -1,6 +1,7 @@
 "use strict";
 
 import { Component } from "@angular/core";
+import template from "./homeOutlet.component.html";
 
 /**
  * Parent route/component for Home subroutes.
@@ -9,7 +10,7 @@ import { Component } from "@angular/core";
  */
 @Component({
   selector: "home-outlet",
-  template: `<router-outlet></router-outlet>`,
+  template,
 })
 export class HomeOutlet {
   /**

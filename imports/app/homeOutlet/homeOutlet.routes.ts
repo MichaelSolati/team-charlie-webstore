@@ -1,7 +1,8 @@
 import { Routes }  from "@angular/router";
 
-import { HomeOutlet } from "/imports/app/homeOutlet/homeOutlet.component";
+import { HomeOutlet } from "./homeOutlet.component";
 import { Home } from "/imports/app/home/home.component";
+import { LoginPage } from "/imports/app/loginPage/loginPage.component";
 
 /**
  * Routes for Home parent component.
@@ -14,5 +15,8 @@ export const homeOutletRoutes: Routes = [{
   children: [{
     path: "",
     component: Home
+  }, {
+    path: "log-in",
+    component: LoginPage
   }]
 }];

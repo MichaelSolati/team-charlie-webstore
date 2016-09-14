@@ -4,11 +4,15 @@ import { BrowserModule } from "@angular/platform-browser";
 import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 import { MeteorModule } from "angular2-meteor";
 
-import { AppComponent } from "./app.component";
 import { routing } from "./app.routes";
 
-import { HomeOutlet } from "/imports/app/homeOutlet/homeOutlet.component";
+import { AppComponent } from "./app.component";
+import { AdminHome } from "/imports/app/adminHome/adminHome.component";
+import { AdminOutlet } from "/imports/app/adminOutlet/adminOutlet.component";
 import { Home } from "/imports/app/home/home.component";
+import { HomeNavbar } from "/imports/app/homeNavbar/homeNavbar.component";
+import { HomeOutlet } from "/imports/app/homeOutlet/homeOutlet.component";
+import { LoginPage } from "/imports/app/loginPage/loginPage.component";
 
 /**
  * Declares an NgModule. Declares all dependencies as well as which component to bootstrap.
@@ -23,8 +27,12 @@ import { Home } from "/imports/app/home/home.component";
   ],
   declarations: [
     AppComponent,
+    AdminHome,
+    AdminOutlet,
+    Home,
+    HomeNavbar,
     HomeOutlet,
-    Home
+    LoginPage
   ],
   bootstrap: [AppComponent]
 })

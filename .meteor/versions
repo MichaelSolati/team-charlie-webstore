@@ -66,6 +66,7 @@ spacebars-compiler@1.0.13
 standard-minifier-css@1.2.0
 standard-minifier-js@1.2.0
 tracker@1.1.0
+twbs:bootstrap@3.3.6
 ui@1.0.11
 underscore@1.0.9
 urigo:static-html-compiler@0.1.8
