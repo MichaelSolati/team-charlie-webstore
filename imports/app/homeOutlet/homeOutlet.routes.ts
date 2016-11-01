@@ -3,6 +3,7 @@ import { Routes }  from "@angular/router";
 import { HomeOutlet } from "./homeOutlet.component";
 import { Home } from "/imports/app/home/home.component";
 import { LoginPage } from "/imports/app/loginPage/loginPage.component";
+import { HomeNavbar } from "/imports/app/homeNavbar/homeNavbar.component";
 
 /**
  * Routes for Home parent component.
@@ -20,3 +21,10 @@ export const homeOutletRoutes: Routes = [{
     component: LoginPage
   }]
 }];
+
+export const homeOutletComponents: Array<any> = [
+  HomeOutlet,
+  Home,
+  LoginPage,
+  HomeNavbar
+];

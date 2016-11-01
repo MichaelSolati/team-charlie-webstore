@@ -16,3 +16,8 @@ export const adminOutletRoutes: Routes = [{
     component: AdminHome
   }]
 }];
+
+export const adminOutletComponents: Array<any> = [
+  AdminOutlet,
+  AdminHome
+];

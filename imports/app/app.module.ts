@@ -3,15 +3,9 @@ import { FormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from '@angular/router';
 
-import { routing } from "./app.routes";
-
 import { AppComponent } from "./app.component";
-import { AdminHome } from "/imports/app/adminHome/adminHome.component";
-import { AdminOutlet } from "/imports/app/adminOutlet/adminOutlet.component";
-import { Home } from "/imports/app/home/home.component";
-import { HomeNavbar } from "/imports/app/homeNavbar/homeNavbar.component";
-import { HomeOutlet } from "/imports/app/homeOutlet/homeOutlet.component";
-import { LoginPage } from "/imports/app/loginPage/loginPage.component";
+
+import { appRouting, appComponents } from "./app.routes";
 
 /**
 * Declares an NgModule. Declares all dependencies as well as which component to bootstrap.
@@ -21,16 +15,11 @@ import { LoginPage } from "/imports/app/loginPage/loginPage.component";
   imports: [
     BrowserModule,
     FormsModule,
-    routing
+    appRouting
   ],
   declarations: [
     AppComponent,
-    AdminHome,
-    AdminOutlet,
-    Home,
-    HomeNavbar,
-    HomeOutlet,
-    LoginPage
+    ...appComponents
   ],
   bootstrap: [AppComponent]
 })
