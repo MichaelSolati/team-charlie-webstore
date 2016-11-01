@@ -1,8 +1,7 @@
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
-import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
-import { MeteorModule } from "angular2-meteor";
+import { RouterModule } from '@angular/router';
 
 import { routing } from "./app.routes";
 
@@ -15,14 +14,13 @@ import { HomeOutlet } from "/imports/app/homeOutlet/homeOutlet.component";
 import { LoginPage } from "/imports/app/loginPage/loginPage.component";
 
 /**
- * Declares an NgModule. Declares all dependencies as well as which component to bootstrap.
- * @class AppModule
- */
+* Declares an NgModule. Declares all dependencies as well as which component to bootstrap.
+* @class AppModule
+*/
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    MeteorModule,
     routing
   ],
   declarations: [
