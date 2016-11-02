@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from '@angular/router';
+import { METEOR_PROVIDERS } from 'angular2-meteor';
 
 import { AppComponent } from "./app.component";
 
@@ -20,6 +21,9 @@ import { appRouting, appComponents } from "./app.routes";
   declarations: [
     AppComponent,
     ...appComponents
+  ],
+  providers: [
+    METEOR_PROVIDERS
   ],
   bootstrap: [AppComponent]
 })

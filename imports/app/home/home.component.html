@@ -4,8 +4,10 @@
 
 
 <div class="row">
-  <div *ngFor="let deal of deals" class="col-md-3 col-sm-2">
-    <p>{{deal.itemName}}</p>
-    <p>{{deal.price}}</p>
+  <div *ngFor="let item of items" class="col-md-3 col-sm-2">
+    <p>{{item.name}}</p>
+    <p>{{item.price}}</p>
+    <p>{{item.description}}</p>
+    <p>{{item.addedOn | date}}</p>
   </div>
 </div>
