@@ -1,5 +1,3 @@
-"use strict";
-
 import { Component } from "@angular/core";
 
 /**
@@ -9,7 +7,10 @@ import { Component } from "@angular/core";
  */
 @Component({
   selector: "admin-outlet",
-  template: `<router-outlet></router-outlet>`,
+  template: `
+  <app-admin-navbar></app-admin-navbar>
+  <router-outlet></router-outlet>
+  `,
 })
 export class AdminOutlet {
   /**

@@ -4,6 +4,7 @@ import { HomeOutlet } from "./homeOutlet.component";
 import { Home } from "/imports/app/home/home.component";
 import { LoginPage } from "/imports/app/loginPage/loginPage.component";
 import { HomeNavbar } from "/imports/app/homeNavbar/homeNavbar.component";
+import { ItemPageComponent } from "/imports/app/item-page/item-page.component";
 
 /**
  * Routes for Home parent component.
@@ -19,6 +20,9 @@ export const homeOutletRoutes: Routes = [{
   }, {
     path: "log-in",
     component: LoginPage
+  }, {
+    path: "item/:itemId",
+    component: ItemPageComponent
   }]
 }];
 
@@ -26,5 +30,6 @@ export const homeOutletComponents: Array<any> = [
   HomeOutlet,
   Home,
   LoginPage,
-  HomeNavbar
+  HomeNavbar,
+  ItemPageComponent
 ];
