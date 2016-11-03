@@ -6,7 +6,7 @@ import { MeteorObservable } from 'meteor-rxjs';
 import { Items } from "/imports/api/items/collection";
 import { Item } from "/imports/app/shared/interfaces/item";
 
-import template from "./item-page.component.html";
+import template from "./search.component.html";
 
 /**
 * Page to view an item.
@@ -14,10 +14,10 @@ import template from "./item-page.component.html";
 * @constructor
 */
 @Component({
-  selector: "app-item-page",
+  selector: "app-search",
   template: template
 })
-export class ItemPageComponent implements OnInit, OnDestroy {
+export class SearchComponent implements OnInit, OnDestroy {
   private item: Item;
   private itemFound: boolean = false
   private itemId: string;

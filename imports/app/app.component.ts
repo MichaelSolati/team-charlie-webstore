@@ -14,6 +14,6 @@ export class AppComponent {
   * @method constructor
   */
   constructor () {
-
+    Bert.alert( "Team Charlie; we spit hot 🔥🔥🔥", 'success', 'growl-top-right' );
   }
 }

@@ -31,7 +31,6 @@ export class Home implements OnInit, OnDestroy {
   * @method ngOnInit
   */
   ngOnInit() {
-    Bert.alert( "Team Charlie; we spit hot 🔥🔥🔥", 'success', 'growl-top-right' );
     this.itemsSub = MeteorObservable.subscribe('items.fireDeals').subscribe(() => {
       MeteorObservable.autorun().subscribe(() => {
         this.items = Items.find({}).fetch();

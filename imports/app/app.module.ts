@@ -4,6 +4,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from '@angular/router';
 import { METEOR_PROVIDERS } from 'angular2-meteor';
 
+import { Ng2PaginationModule } from 'ng2-pagination';
+
 import { AppComponent } from "./app.component";
 
 import { appRouting, appComponents } from "./app.routes";
@@ -16,7 +18,8 @@ import { appRouting, appComponents } from "./app.routes";
   imports: [
     BrowserModule,
     FormsModule,
-    appRouting
+    appRouting,
+    Ng2PaginationModule
   ],
   declarations: [
     AppComponent,
