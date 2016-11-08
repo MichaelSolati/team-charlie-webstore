@@ -1,5 +1,4 @@
 import { Component } from "@angular/core";
-
 /**
 * Our main App component.
 * @class AppComponent

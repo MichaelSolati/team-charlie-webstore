@@ -1,3 +1,5 @@
+import "angular2-meteor-polyfills";
+
 import { enableProdMode } from "@angular/core";
 import { Meteor } from "meteor/meteor";
 
