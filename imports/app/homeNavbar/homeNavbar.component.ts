@@ -11,10 +11,14 @@ import template from "./homeNavbar.component.html";
   template: template,
 })
 export class HomeNavbar {
+  private search: string = "Taco";
   /**
   * @method constructor
   */
   constructor () {
-
+  console.log("hello");
+  }
+  newFunction(){
+  console.log(this.search);
   }
 }

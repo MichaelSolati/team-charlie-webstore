@@ -4,6 +4,9 @@ import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from '@angular/router';
 import { METEOR_PROVIDERS } from 'angular2-meteor';
 
+// Add new components like below
+import {TemplateComponent} from './template/template.component'
+
 import { Ng2PaginationModule } from 'ng2-pagination';
 
 import { AppComponent } from "./app.component";
@@ -21,9 +24,11 @@ import { appRouting, appComponents } from "./app.routes";
     appRouting,
     Ng2PaginationModule
   ],
+  //add new components here
   declarations: [
     AppComponent,
-    ...appComponents
+    ...appComponents,
+    TemplateComponent
   ],
   providers: [
     METEOR_PROVIDERS
