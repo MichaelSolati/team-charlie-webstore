@@ -16,7 +16,7 @@ export class HomeNavbar {
   * @method constructor
   */
   constructor () {
-  console.log("hello");
+    
   }
   newFunction(){
   console.log(this.search);

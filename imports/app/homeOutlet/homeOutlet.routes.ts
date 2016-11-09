@@ -5,6 +5,9 @@ import { Home } from "/imports/app/home/home.component";
 import { LoginPage } from "/imports/app/loginPage/loginPage.component";
 import { HomeNavbar } from "/imports/app/homeNavbar/homeNavbar.component";
 import { ItemPageComponent } from "/imports/app/item-page/item-page.component";
+import { LoginFormComponent } from "/imports/app/loginform/loginform.component";
+import { ShippingComponent } from "/imports/app/shipping/shipping.component";
+import { PaymentComponent } from "/imports/app/paymentmethod/paymentmethod.component";
 
 /**
  * Routes for Home parent component.
@@ -23,6 +26,12 @@ export const homeOutletRoutes: Routes = [{
   }, {
     path: "item/:itemId",
     component: ItemPageComponent
+  }, {
+    path: "shipping",
+    component: ShippingComponent
+  }, {
+    path: "payment",
+    component: PaymentComponent
   }]
 }];
 
@@ -31,5 +40,8 @@ export const homeOutletComponents: Array<any> = [
   Home,
   LoginPage,
   HomeNavbar,
-  ItemPageComponent
+  ItemPageComponent,
+  LoginFormComponent,
+  ShippingComponent,
+  PaymentComponent
 ];

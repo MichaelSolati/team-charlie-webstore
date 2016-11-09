@@ -4,8 +4,6 @@ import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from '@angular/router';
 import { METEOR_PROVIDERS } from 'angular2-meteor';
 
-import { ShippingAddressComponent } from './shippingAddress/shippingAddress.component';
-
 // Add new components like below
 import {TemplateComponent} from './template/template.component'
 
@@ -30,8 +28,7 @@ import { appRouting, appComponents } from "./app.routes";
   declarations: [
     AppComponent,
     ...appComponents,
-    TemplateComponent,
-    ShippingAddressComponent
+    TemplateComponent
   ],
   providers: [
     METEOR_PROVIDERS

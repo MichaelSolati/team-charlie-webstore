@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 
-import template from "./payment.component.html";
+import template from "./paymentmethod.component.html";
 
 @Component({
   selector: "app-payment",
