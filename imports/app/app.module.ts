@@ -12,6 +12,7 @@ import { Ng2PaginationModule } from 'ng2-pagination';
 import { AppComponent } from "./app.component";
 
 import { appRouting, appComponents } from "./app.routes";
+import { UserService } from "./shared/services/user.service";
 
 /**
 * Declares an NgModule. Declares all dependencies as well as which component to bootstrap.
@@ -31,7 +32,8 @@ import { appRouting, appComponents } from "./app.routes";
     TemplateComponent
   ],
   providers: [
-    METEOR_PROVIDERS
+    METEOR_PROVIDERS,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
