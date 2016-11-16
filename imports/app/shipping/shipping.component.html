@@ -1,21 +1,21 @@
-<h1><b>Shipping Information</b>
-<h3><b>Addresses</b>
-<h3><b>Add New Address</b>
-</h1><div class="dropdown">
+<h1><b>Shipping Information</b></h1>
+<h3><b>Addresses</b></h3>
+<h3><b>Add New Address</b></h3>
+  <form (ngSubmit)="submit()">
   <div class="input-group">
-    <span class="input-group-addon" id="basic-addon1">Street Number 1</span>
-    <input type="text" class="form-control" placeholder="15 Main Street" aria-describedby="basic-addon1">
+    <span class="input-group-addon" for="address1" id="basic-addon1">Street Number 1</span>
+    <input type="text" class="form-control" name="address1" [(ngModel)]="address.address1" placeholder="15 Main Street" aria-describedby="basic-addon1">
   </div>
   <div class="input-group">
     <span class="input-group-addon" id="basic-addon1">Street Number 2</span>
-    <input type="text" class="form-control" placeholder="15 Main Street" aria-describedby="basic-addon1">
+    <input type="text" name="address2" [(ngModel)]="address.address2" class="form-control" placeholder="15 Main Street" aria-describedby="basic-addon1">
   </div>
   <div class="input-group">
     <span class="input-group-addon" id="basic-addon1">City</span>
-    <input type="text" class="form-control" placeholder="Smallville" aria-describedby="basic-addon1">
+    <input type="text" name="city" [(ngModel)]="address.city" class="form-control" placeholder="Smallville" aria-describedby="basic-addon1">
   </div>
-
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    <div class="input-group">
+  <button class="btn btn-default dropdown-toggle" type="button" name="state" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
     State
     <span class="caret"></span>
     </button>
@@ -75,6 +75,7 @@
 </div>
 <div class="input-group">
   <span class="input-group-addon" id="basic-addon1">Zip Code</span>
-  <input type="text" class="form-control" placeholder="00000" aria-describedby="basic-addon1">
+  <input type="text" name="zip" [(ngModel)]="address.zip" class="form-control" placeholder="00000" aria-describedby="basic-addon1">
 </div>
-<button type="button" class="btn btn-default navbar-btn">Save</button>
+<button type="submit" class="btn btn-default navbar-btn">Save</button>
+  </form>
