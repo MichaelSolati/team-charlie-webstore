@@ -10,11 +10,11 @@
       <form (ngSubmit)="submit()">
         <div class="input-group">
           <span class="input-group-addon" for="address1" id="basic-addon1">Street Number 1</span>
-          <input type="text" class="form-control" name="address1" [(ngModel)]="address.address1" placeholder="15 Main Street" aria-describedby="basic-addon1">
+          <input type="text" required class="form-control" name="address1" [(ngModel)]="address.address1" placeholder="15 Main Street" aria-describedby="basic-addon1">
         </div>
     </div>
   </div>
-  <br>
+    <br>
   <div class="row">
     <div class="col-xs-5 col-sm-5">
       <div class="input-group">
@@ -23,12 +23,12 @@
       </div>
     </div>
   </div>
-      <br>
+    <br>
   <div class="row">
     <div class="col-xs-3">
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">City</span>
-        <input type="text" name="city" [(ngModel)]="address.city" class="form-control" placeholder="Smallville" aria-describedby="basic-addon1">
+        <input type="text" required name="city" [(ngModel)]="address.city" class="form-control" placeholder="Smallville" aria-describedby="basic-addon1">
       </div>
     </div>
   </div>
@@ -101,7 +101,7 @@
     <div class="col-xs-2 col-sm-2">
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">Zip Code</span>
-        <input type="text" name="zip" [(ngModel)]="address.zip" class="form-control" placeholder="00000" aria-describedby="basic-addon1">
+        <input type="text" required name="zip" [(ngModel)]="address.zip" class="form-control" placeholder="00000" aria-describedby="basic-addon1">
       </div>
     </div>
   </div>
