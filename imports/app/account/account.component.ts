@@ -3,7 +3,7 @@ import { Component } from "@angular/core";
 import template from "./account.component.html";
 
 @Component({
-  selector: "app-template",
+  selector: "app-account",
   template: template
 })
 export class AccountComponent {

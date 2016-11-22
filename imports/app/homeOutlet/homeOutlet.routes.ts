@@ -3,6 +3,7 @@ import { Routes }  from "@angular/router";
 import { HomeOutlet } from "./homeOutlet.component";
 import { Home } from "/imports/app/home/home.component";
 import { SearchComponent } from "/imports/app/search/search.component";
+import { SearchComponent } from "/imports/app/account/account.component";
 import { LoginPage } from "/imports/app/loginPage/loginPage.component";
 import { HomeNavbar } from "/imports/app/homeNavbar/homeNavbar.component";
 import { ItemPageComponent } from "/imports/app/item-page/item-page.component";
@@ -39,6 +40,9 @@ export const homeOutletRoutes: Routes = [{
   }, {
     path: "search",
     component: SearchComponent
+  }, {
+    path: "my-account",
+    component: AccountComponent
   }]
 }];
 
@@ -51,5 +55,6 @@ export const homeOutletComponents: Array<any> = [
   LoginFormComponent,
   ShippingComponent,
   PaymentComponent,
-  SearchComponent
+  SearchComponent,
+  AccountComponent
 ];
