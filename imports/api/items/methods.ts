@@ -14,11 +14,18 @@ Meteor.methods({
   "items.upsertItem"(item: Item) {
     try {
       //if (this.userId) {
-        const id = item._id;
-        delete item._id;
-        return Items.upsert(id, {$set: item});
+      const id = item._id;
+      delete item._id;
+      return Items.upsert(id, {$set: item});
       //}
       //throw new Meteor.Error("User must be signed in to upsert an item.");
+    } catch (e) {
+      throw new Meteor.Error(e.reason);
+    }
+  },
+  "items.remove"(itemId: string) {
+    try {
+      return Items.remove(itemId)
     } catch (e) {
       throw new Meteor.Error(e.reason);
     }
