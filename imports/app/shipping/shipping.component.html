@@ -1,81 +1,114 @@
-<h1><b>Shipping Information</b></h1>
-<h3><b>Addresses</b></h3>
-<h3><b>Add New Address</b></h3>
-  <form (ngSubmit)="submit()">
-  <div class="input-group">
-    <span class="input-group-addon" for="address1" id="basic-addon1">Street Number 1</span>
-    <input type="text" class="form-control" name="address1" [(ngModel)]="address.address1" placeholder="15 Main Street" aria-describedby="basic-addon1">
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-sm-6">
+      <h3 class="text-left"><b>Set Address</b></h3>
+    </div>
   </div>
-  <div class="input-group">
-    <span class="input-group-addon" id="basic-addon1">Street Number 2</span>
-    <input type="text" name="address2" [(ngModel)]="address.address2" class="form-control" placeholder="15 Main Street" aria-describedby="basic-addon1">
+    <br>
+  <div class="row">
+    <div class="col-xs-5 col-sm-5">
+      <form (ngSubmit)="submit()">
+        <div class="input-group">
+          <span class="input-group-addon" for="address1" id="basic-addon1">Street Number 1</span>
+          <input type="text" class="form-control" name="address1" [(ngModel)]="address.address1" placeholder="15 Main Street" aria-describedby="basic-addon1">
+        </div>
+    </div>
   </div>
-  <div class="input-group">
-    <span class="input-group-addon" id="basic-addon1">City</span>
-    <input type="text" name="city" [(ngModel)]="address.city" class="form-control" placeholder="Smallville" aria-describedby="basic-addon1">
+  <br>
+  <div class="row">
+    <div class="col-xs-5 col-sm-5">
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">Street Number 2</span>
+        <input type="text" name="address2" [(ngModel)]="address.address2" class="form-control" placeholder="15 Main Street" aria-describedby="basic-addon1">
+      </div>
+    </div>
   </div>
-    <div class="input-group">
-  <button class="btn btn-default dropdown-toggle" type="button" name="state" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    State
-    <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    <li class="dropdown-header">Your State</li>
-    <li><a href="#">Albama</a></li>
-    <li><a href="#">Alaska</a></li>
-    <li><a href="#">Arizona</a></li>
-    <li><a href="#">Arkansas</a></li>
-    <li><a href="#">California</a></li>
-    <li><a href="#">Colorado</a></li>
-    <li><a href="#">Connecticut</a></li>
-    <li><a href="#">Delaware</a></li>
-    <li><a href="#">Florida</a></li>
-    <li><a href="#">Georgia</a></li>
-    <li><a href="#">Hawaii</a></li>
-    <li><a href="#">Idaho</a></li>
-    <li><a href="#">Illinois</a></li>
-    <li><a href="#">Indiana</a></li>
-    <li><a href="#">Iowa</a></li>
-    <li><a href="#">Kansas</a></li>
-    <li><a href="#">Kentucky</a></li>
-    <li><a href="#">Louisiana</a></li>
-    <li><a href="#">Maine</a></li>
-    <li><a href="#">Maryland</a></li>
-    <li><a href="#">Massachusetts</a></li>
-    <li><a href="#">Michigan</a></li>
-    <li><a href="#">Minnesota</a></li>
-    <li><a href="#">Mississippi</a></li>
-    <li><a href="#">Missouri</a></li>
-    <li><a href="#">Montana</a></li>
-    <li><a href="#">Nebraska</a></li>
-    <li><a href="#">Nevada</a></li>
-    <li><a href="#">New Hampshire</a></li>
-    <li><a href="#">New Jersey</a></li>
-    <li><a href="#">New Mexico</a></li>
-    <li><a href="#">New York</a></li>
-    <li><a href="#">North Carolina</a></li>
-    <li><a href="#">North Dakota</a></li>
-    <li><a href="#">Ohio</a></li>
-    <li><a href="#">Oklahoma</a></li>
-    <li><a href="#">Oregon</a></li>
-    <li><a href="#">Pennsylvania</a></li>
-    <li><a href="#">Rhode Island</a></li>
-    <li><a href="#">South Carolina</a></li>
-    <li><a href="#">South Dakota</a></li>
-    <li><a href="#">Tennessee</a></li>
-    <li><a href="#">Texas</a></li>
-    <li><a href="#">Utah</a></li>
-    <li><a href="#">Vermont</a></li>
-    <li><a href="#">Virginia</a></li>
-    <li><a href="#">Washington</a></li>
-    <li><a href="#">West Virginia</a></li>
-    <li><a href="#">Wisconsin</a></li>
-    <li><a href="#">Wyoming</a></li>
-  </ul>
-</div>
-<div class="input-group">
-  <span class="input-group-addon" id="basic-addon1">Zip Code</span>
-  <input type="text" name="zip" [(ngModel)]="address.zip" class="form-control" placeholder="00000" aria-describedby="basic-addon1">
-</div>
-<button type="submit" class="btn btn-default navbar-btn">Save</button>
-  </form>
+      <br>
+  <div class="row">
+    <div class="col-xs-3">
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">City</span>
+        <input type="text" name="city" [(ngModel)]="address.city" class="form-control" placeholder="Smallville" aria-describedby="basic-addon1">
+      </div>
+    </div>
+  </div>
+    <br>
+  <div class="row">
+    <div class="col-xs-2">
+      <div class="input-group">
+        <button class="btn btn-default dropdown-toggle" type="button" name="state" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        State
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li class="dropdown-header">Your State</li>
+        <li><a href="#">Albama</a></li>
+        <li><a href="#">Alaska</a></li>
+        <li><a href="#">Arizona</a></li>
+        <li><a href="#">Arkansas</a></li>
+        <li><a href="#">California</a></li>
+        <li><a href="#">Colorado</a></li>
+        <li><a href="#">Connecticut</a></li>
+        <li><a href="#">Delaware</a></li>
+        <li><a href="#">Florida</a></li>
+        <li><a href="#">Georgia</a></li>
+        <li><a href="#">Hawaii</a></li>
+        <li><a href="#">Idaho</a></li>
+        <li><a href="#">Illinois</a></li>
+        <li><a href="#">Indiana</a></li>
+        <li><a href="#">Iowa</a></li>
+        <li><a href="#">Kansas</a></li>
+        <li><a href="#">Kentucky</a></li>
+        <li><a href="#">Louisiana</a></li>
+        <li><a href="#">Maine</a></li>
+        <li><a href="#">Maryland</a></li>
+        <li><a href="#">Massachusetts</a></li>
+        <li><a href="#">Michigan</a></li>
+        <li><a href="#">Minnesota</a></li>
+        <li><a href="#">Mississippi</a></li>
+        <li><a href="#">Missouri</a></li>
+        <li><a href="#">Montana</a></li>
+        <li><a href="#">Nebraska</a></li>
+        <li><a href="#">Nevada</a></li>
+        <li><a href="#">New Hampshire</a></li>
+        <li><a href="#">New Jersey</a></li>
+        <li><a href="#">New Mexico</a></li>
+        <li><a href="#">New York</a></li>
+        <li><a href="#">North Carolina</a></li>
+        <li><a href="#">North Dakota</a></li>
+        <li><a href="#">Ohio</a></li>
+        <li><a href="#">Oklahoma</a></li>
+        <li><a href="#">Oregon</a></li>
+        <li><a href="#">Pennsylvania</a></li>
+        <li><a href="#">Rhode Island</a></li>
+        <li><a href="#">South Carolina</a></li>
+        <li><a href="#">South Dakota</a></li>
+        <li><a href="#">Tennessee</a></li>
+        <li><a href="#">Texas</a></li>
+        <li><a href="#">Utah</a></li>
+        <li><a href="#">Vermont</a></li>
+        <li><a href="#">Virginia</a></li>
+        <li><a href="#">Washington</a></li>
+        <li><a href="#">West Virginia</a></li>
+        <li><a href="#">Wisconsin</a></li>
+        <li><a href="#">Wyoming</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <br>
+  <div class="row">
+    <div class="col-xs-2 col-sm-2">
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">Zip Code</span>
+        <input type="text" name="zip" [(ngModel)]="address.zip" class="form-control" placeholder="00000" aria-describedby="basic-addon1">
+      </div>
+    </div>
+  </div>
+    <br>
+  <div class="row">
+    <div class="col-xs-2 col-sm-2">
+      <button type="submit" class="btn btn-default navbar-btn">Save</button>
+    </div>
+  </div>
+</form>
