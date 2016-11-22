@@ -22,42 +22,42 @@
           </div>
         </div>
 
-<div class="row">
-  <div class="col-xs-7 col-sm-7">
-    <div class="input-group">
-      <span class="input-group-addon" for="ccnumber" id="basic-addon1">Card number</span>
-        <input type="number" class="form-control" placeholder="9999999999999999" aria-describedby="basic-addon1" required name="ccnumber" [(ngModel)]="payment.ccnumber">
+        <div class="row">
+          <div class="col-xs-7 col-sm-7">
+            <div class="input-group">
+              <span class="input-group-addon" for="ccnumber" id="basic-addon1">Card number</span>
+              <input type="number" class="form-control" placeholder="9999999999999999" aria-describedby="basic-addon1" required name="ccnumber" [(ngModel)]="payment.ccnumber">
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-xs-4 col-sm-4">
+            <div class="input-group">
+              <span class="input-group-addon" for="month" id="basic-addon1">Month</span>
+              <input type="month" class="form-control" placeholder="MM" aria-describedby="basic-addon1" required name="month" [(ngModel)]="payment.month">
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-xs-4 col-sm-4">
+            <div class="input-group">
+              <span class="input-group-addon" for="csv" id="basic-addon1">CSV</span>
+              <input type="number" class="form-control" placeholder="999" aria-describedby="basic-addon1" required name="csv" [(ngModel)]="payment.csv">
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-xs-5 col-sm-5">
+            <div class="input-group">
+              <span class="input-group-addon" for="zip" id="basic-addon1">Zip code</span>
+              <input type="number" class="form-control" placeholder="99999" aria-describedby="basic-addon2" required name="zip" [(ngModel)]="payment.zip">
+            </div>
+          </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-default navbar-btn">Save</button>
+      </form>
     </div>
-  </div>
-</div>
-<br>
-<div class="row">
-  <div class="col-xs-4 col-sm-4">
-    <div class="input-group">
-      <span class="input-group-addon" for="month" id="basic-addon1">Month</span>
-      <input type="month" class="form-control" placeholder="MM" aria-describedby="basic-addon1" required name="month" [(ngModel)]="payment.month">
-    </div>
-  </div>
-</div>
-<br>
-<div class="row">
-  <div class="col-xs-4 col-sm-4">
-    <div class="input-group">
-      <span class="input-group-addon" for="csv" id="basic-addon1">CSV</span>
-      <input type="number" class="form-control" placeholder="999" aria-describedby="basic-addon1" required name="csv" [(ngModel)]="payment.csv">
-    </div>
-  </div>
-</div>
-<br>
-<div class="row">
-  <div class="col-xs-5 col-sm-5">
-    <div class="input-group">
-      <span class="input-group-addon" for="zip" id="basic-addon1">Zip code</span>
-      <input type="number" class="form-control" placeholder="99999" aria-describedby="basic-addon2" required name="zip" [(ngModel)]="payment.zip">
-    </div>
-  </div>
-</div>
-<br>
-<button type="submit" class="btn btn-default navbar-btn">Save</button>
-</form>
-</div>
