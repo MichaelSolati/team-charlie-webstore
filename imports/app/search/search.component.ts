@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from 'rxjs/Subscription';
 import { MeteorObservable } from 'meteor-rxjs';
+import { ReactiveVar } from "meteor/reactive-var";
 
 import { Items } from "/imports/api/items/collection";
 import { Item } from "/imports/app/shared/interfaces/item";
@@ -18,30 +19,26 @@ import template from "./search.component.html";
   template: template
 })
 export class SearchComponent implements OnInit, OnDestroy {
-  private item: Item;
-  private itemFound: boolean = false
-  private itemId: string;
-  private itemIdSub: Subscription;
-  private itemSub: Subscription;
+  private search: Array<Item> = [];
+  private itemsSub: Subscription;
+  private searchQuery: Subscription;
+  private query: ReactiveVar<string> = new ReactiveVar("");
   /**
   * @method constructor
   */
-  constructor (private route: ActivatedRoute) { }
+  constructor (private route: ActivatedRoute, private router: Router) { }
   /**
   * Subscribes to item.
   * @method ngOnInit
   */
   ngOnInit() {
-    this.itemIdSub = this.route.params.subscribe((params) => {
-      this.itemId = params.itemId;
-      this.itemSub = MeteorObservable.subscribe("items.item", this.itemId).subscribe(() => {
-        MeteorObservable.autorun().subscribe(() => {
-          this.item = Items.findOne({});
-          if (this.item) {
-            this.itemFound = true;
-          } else {
-            this.itemFound = false;
-          }
+    this.searchQuery = this.route.params.subscribe((params) => {
+      this.query.set(decodeURI(params.item));
+      MeteorObservable.autorun().subscribe(() => {
+        this.itemsSub = MeteorObservable.subscribe("items.search", this.query.get()).subscribe(() => {
+          MeteorObservable.autorun().subscribe(() => {
+            this.search = Items.find().fetch();
+          });
         });
       });
     });
@@ -51,7 +48,17 @@ export class SearchComponent implements OnInit, OnDestroy {
   * @method ngOnInit
   */
   ngOnDestroy() {
-    this.itemIdSub.unsubscribe();
-    this.itemSub.unsubscribe();
+    this.searchQuery.unsubscribe();
+    this.itemsSub.unsubscribe();
+  }
+
+  private newSearch() {
+    let search = encodeURI(this.query.get());
+    this.router.navigate(['search', search]);
+  }
+
+  private runSearch(event:any) {
+    let value = event.target.value;
+    this.query.set(value)
   }
 }
