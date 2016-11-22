@@ -1,7 +1,7 @@
 <h1><b>Payment Method</b></h1>
-<form class="form-horizontal" (ngSubmit)="saveItem()" #itemForm="ngForm">
+<form (ngSubmit)="submit()">
   <div class="form-group">
-  </h1><div class="dropdown">
+  <div class="dropdown">
     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
       Card Type
       <span class="caret"></span>
@@ -13,21 +13,28 @@
         <li><a href="#">Visa</a></li>
       </ul>
   </div>
-</h1><div class="dropdown">
+</div>
+
   <div class="input-group">
-    <span class="input-group-addon" id="basic-addon1">Card number</span>
-    <input type="text" class="form-control" placeholder="99999999" aria-describedby="basic-addon1">
+    <span class="input-group-addon" for="ccnumber" id="basic-addon1">Card number</span>
+    <input type="number" class="form-control" placeholder="99999999" aria-describedby="basic-addon1" required name="ccnumber" [(ngModel)]="payment.ccnumber">
   </div>
+
   <div class="input-group">
-    <span class="input-group-addon" id="basic-addon1">Month</span>
-    <input type="text" class="form-control" placeholder="MM" aria-describedby="basic-addon1">
-    <span class="input-group-addon" id="basic-addon1">Year</span>
-    <input type="text" class="form-control" placeholder="YY" aria-describedby="basic-addon2">
+    <span class="input-group-addon" for="month" id="basic-addon1">Month</span>
+    <input type="month" class="form-control" placeholder="MM" aria-describedby="basic-addon1" required name="month" [(ngModel)]="payment.month">
+
+    <span class="input-group-addon" for="year" id="basic-addon1">Year</span>
+    <input type="number" class="form-control" placeholder="YY" aria-describedby="basic-addon2" required name="year" [(ngModel)]="payment.year">
   </div>
+
   <div class="input-group">
-    <span class="input-group-addon" id="basic-addon1">CSV</span>
-    <input type="text" class="form-control" placeholder="999" aria-describedby="basic-addon1">
-    <span class="input-group-addon" id="basic-addon1">Zip code</span>
-    <input type="text" class="form-control" placeholder="99999" aria-describedby="basic-addon2">
+    <span class="input-group-addon" for="csv" id="basic-addon1">CSV</span>
+    <input type="number" class="form-control" placeholder="999" aria-describedby="basic-addon1" required name="csv" [(ngModel)]="payment.csv">
+
+    <span class="input-group-addon" for="zip" id="basic-addon1">Zip code</span>
+    <input type="number" class="form-control" placeholder="99999" aria-describedby="basic-addon2" required name="zip" [(ngModel)]="payment.zip">
   </div>
-<button type="button" class="btn btn-default navbar-btn">Save</button>
+
+<button type="submit" class="btn btn-default navbar-btn">Save</button>
+</form>
