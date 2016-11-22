@@ -11,6 +11,8 @@ import { AppComponent } from "./app.component";
 
 import { appRouting, appComponents } from "./app.routes";
 import { UserService } from "./shared/services/user.service";
+import { ActivateGuard } from "/imports/app/shared/services/activate.service";
+import { DeactivateGuard } from "/imports/app/shared/services/deactivate.service";
 
 /**
 * Declares an NgModule. Declares all dependencies as well as which component to bootstrap.
@@ -30,7 +32,9 @@ import { UserService } from "./shared/services/user.service";
   ],
   providers: [
     METEOR_PROVIDERS,
-    UserService
+    UserService,
+    ActivateGuard,
+    DeactivateGuard
   ],
   bootstrap: [AppComponent]
 })

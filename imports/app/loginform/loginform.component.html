@@ -1,5 +1,9 @@
-<h1 *ngIf="isSigningIn">Sign In</h1>
-<h1 *ngIf="!isSigningIn">Create Account</h1>
+<div class="text-center">
+  <h3 *ngIf="isSigningIn">Sign In</h3>
+  <h6><a class="center" *ngIf="isSigningIn" (click)="toggleSignIn()">(Need An Account?)</a></h6>
+  <h3 *ngIf="!isSigningIn">Create Account</h3>
+  <h6><a class="center" *ngIf="!isSigningIn" (click)="toggleSignIn()">(Already Have An Account?)</a></h6>
+</div>
 <form (ngSubmit)="submit()">
   <div *ngIf="!isSigningIn" class="form-group">
     <label for="name">Name:</label>
@@ -13,8 +17,7 @@
     <label for="password">Password:</label>
     <input type="password" [(ngModel)]="signInForm.password" name="password" class="form-control" id="password" required>
   </div>
-  <button type="submit" class="btn btn-default">Submit</button>
+  <div class="text-center">
+    <button type="submit" class="btn btn-default">Submit</button>
+  </div>
 </form>
-<button *ngIf="isSigningIn" (click)="toggleSignIn()" class="btn btn-default">Need An Account?</button>
-<button *ngIf="!isSigningIn" (click)="toggleSignIn()" class="btn btn-default">Already Have An Account?</button>
-<button (click)="signOut()" class="btn btn-default">Sign Out</button>

@@ -1,5 +1,8 @@
 import { Routes }  from "@angular/router";
 
+import { ActivateGuard } from "/imports/app/shared/services/activate.service";
+import { DeactivateGuard } from "/imports/app/shared/services/deactivate.service";
+
 import { HomeOutlet } from "./homeOutlet.component";
 import { Home } from "/imports/app/home/home.component";
 import { SearchComponent } from "/imports/app/search/search.component";
@@ -24,7 +27,8 @@ export const homeOutletRoutes: Routes = [{
     component: Home
   }, {
     path: "log-in",
-    component: LoginPage
+    component: LoginPage,
+    canActivate: [DeactivateGuard]
   }, {
     path: "item/:itemId",
     component: ItemPageComponent
@@ -42,7 +46,8 @@ export const homeOutletRoutes: Routes = [{
     component: SearchComponent
   }, {
     path: "my-account",
-    component: AccountComponent
+    component: AccountComponent,
+    canActivate: [ActivateGuard]
   }]
 }];
 

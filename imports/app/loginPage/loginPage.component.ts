@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import template from "./loginPage.component.html";
+var baconipsum = require('baconipsum');
 
 /**
  * Navbar component for routes in home outlet.
@@ -11,17 +12,13 @@ import template from "./loginPage.component.html";
   template: template,
 })
 export class LoginPage {
-  signInForm: Object = {
-  "email":"po@po.po",
-  "password":"popopo"
-  };
+  private bacon: Array<string> = [];
   /**
   * @method constructor
   */
   constructor () {
-
-  }
-  signIn () {
-  console.log(this.signInForm);
+    this.bacon.push(baconipsum(15));
+    this.bacon.push(baconipsum(15));
+    this.bacon.push(baconipsum(15));
   }
 }

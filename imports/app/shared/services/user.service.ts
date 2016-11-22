@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Meteor } from "meteor/meteor";
 import { MeteorComponent } from "angular2-meteor";
-import { BehaviorSubject } from "rxjs/BehaviorSubject";
+import { BehaviorSubject } from "rxjs";
 
 /**
 * @class UserService
@@ -10,29 +10,24 @@ import { BehaviorSubject } from "rxjs/BehaviorSubject";
 */
 @Injectable()
 export class UserService extends MeteorComponent {
-  currentUser = new BehaviorSubject<Object>(undefined);
-  currentUserId = new BehaviorSubject<String>(undefined);
+  private user: BehaviorSubject<any> = new BehaviorSubject<any>(false);
   /**
   * @method constructor
   */
   constructor() {
     super();
-    this.subscribeCurrentUser();
-  }
-  /**
-  * Provides details on currently signed in user.
-  * @method subscribeCurrentUser
-  */
-  subscribeCurrentUser() {
+    this.user.next(false);
     this.autorun(() => {
-      if (Meteor.userId()) {
-        this.currentUser.next(Meteor.user());
-        this.currentUserId.next(Meteor.userId());
-        console.log(Meteor.user())
+      if (Meteor.user()) {
+        this.user.next(Meteor.user());
+        // console.log(Meteor.user())
       } else {
-        this.currentUser.next(undefined);
-        this.currentUserId.next(undefined);
+        this.user.next(false);
       }
     });
+  }
+
+  public getUser() {
+    return this.user;
   }
 }

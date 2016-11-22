@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { Accounts } from "meteor/accounts-base";
 import { Meteor } from "meteor/meteor";
+import { Router } from "@angular/router";
 
 import template from "./loginform.component.html";
 
@@ -17,7 +18,7 @@ export class LoginFormComponent {
     }
   }
   private isSigningIn: boolean = true;
-  constructor () {
+  constructor (private router: Router) {
 
   }
   private signIn() {
@@ -26,16 +27,7 @@ export class LoginFormComponent {
         Bert.alert("Could not sign in: "+error.reason, "danger", "growl-top-right");
       } else {
         Bert.alert("Welcome Back!", "success", "growl-top-right");
-      }
-    })
-  }
-
-  private signOut() {
-    Meteor.logout((error, success) => {
-      if (error) {
-        Bert.alert("Could not sign out: "+error.reason, "danger", "growl-top-right");
-      } else {
-        Bert.alert("Good riddance!", "success", "growl-top-right");
+        this.router.navigate(["my-account"]);
       }
     })
   }
@@ -46,6 +38,7 @@ export class LoginFormComponent {
         Bert.alert("Could not create account: "+error.reason, "danger", "growl-top-right");
       } else {
         Bert.alert("Welcome!", "success", "growl-top-right");
+        this.router.navigate(["my-account"]);
       }
     });
   }
