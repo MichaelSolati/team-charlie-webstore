@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-6 col-sm-6">
-      <h1><b>Payment Method</b></h1>
+      <h3 class="text-left"><b>Payment Method</b></h3>
     </div>
   </div>
   <div class="row">
@@ -22,6 +22,7 @@
           </div>
         </div>
 
+<<<<<<< Updated upstream
         <div class="row">
           <div class="col-xs-7 col-sm-7">
             <div class="input-group">
@@ -60,4 +61,38 @@
         <br>
         <button type="submit" class="btn btn-default navbar-btn">Save</button>
       </form>
+=======
+<div class="row">
+  <div class="col-xs-7 col-sm-7">
+    <div class="input-group">
+      <span class="input-group-addon" for="ccnumber" id="basic-addon1">Card number</span>
+        <input type="number" class="form-control" placeholder="0000000000000000" aria-describedby="basic-addon1" required name="ccnumber" [(ngModel)]="payment.ccnumber">
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-xs-4 col-sm-4">
+    <div class="input-group">
+      <span class="input-group-addon" for="month" id="basic-addon1">Month</span>
+      <input type="month" class="form-control" placeholder="MM" aria-describedby="basic-addon1" required name="month" [(ngModel)]="payment.month">
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-xs-4 col-sm-4">
+    <div class="input-group">
+      <span class="input-group-addon" for="csv" id="basic-addon1">CSV</span>
+      <input type="number" class="form-control" placeholder="000" aria-describedby="basic-addon1" required name="csv" [(ngModel)]="payment.csv">
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-xs-5 col-sm-5">
+    <div class="input-group">
+      <span class="input-group-addon" for="zip" id="basic-addon1">Zip code</span>
+      <input type="text" class="form-control" placeholder="00000" aria-describedby="basic-addon2" required name="zip" [(ngModel)]="payment.zip">
+>>>>>>> Stashed changes
     </div>

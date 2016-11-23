@@ -1,7 +1,7 @@
 <section class="container" id="item-details" *ngIf="itemFound">
   <h1>{{item.name}}</h1>
-  <h6>Only {{item.quantity}} Left!</h6>
-  <p>Only: {{item.price | currency:'USD':true}}</p>
+  <h6><p>Added To Store On: {{item.addedOn | date:'shortDate'}}</p></h6>
+  <h5>Only {{item.quantity}} Left!</h5>
+  <p>Only: {{item.price | currency:'USD':true}} </p>
   <p>About: {{item.description}}</p>
-  <p>Added To Store On: {{item.addedOn | date:'shortDate'}}</p>
 </section>
