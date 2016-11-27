@@ -1,7 +1,19 @@
 <section class="container" id="item-details" *ngIf="itemFound">
-  <h1>{{item.name}}</h1>
-  <h6><p>Added To Store On: {{item.addedOn | date:'shortDate'}}</p></h6>
-  <h5>Only {{item.quantity}} Left!</h5>
-  <p>Only: {{item.price | currency:'USD':true}} </p>
-  <p>About: {{item.description}}</p>
+  <div class="row">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h2 class="text-center"><B>{{item.name}}</B></h2>
+        </div>
+        <div class="panel-body">
+          <p>About: {{item.description}}</p>
+          <h5 class="text-right">Quantity: {{item.quantity}} available! </h5>
+          <h5 class="text-right">Only: {{item.price | currency:'USD':true}} each </h5>
+          </div>
+      </div>
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+        <h6>Added To Store On: {{item.addedOn | date:'shortDate'}}</h6>
+      </div>
+      </div>
+  </div>
 </section>
