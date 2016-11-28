@@ -1,13 +1,8 @@
 import { Routes, RouterModule } from "@angular/router";
 
-import { homeOutletRoutes, homeOutletComponents } from "/imports/app/homeOutlet/homeOutlet.routes";
-import { adminOutletRoutes, adminOutletComponents } from "/imports/app/adminOutlet/adminOutlet.routes";
+import { homeOutletRoutes, homeOutletComponents } from "/imports/app/home-outlet/home-outlet.routes";
+import { adminOutletRoutes, adminOutletComponents } from "/imports/app/admin-outlet/admin-outlet.routes";
 
-/**
- * Routes for App.
- * @property appRoutes
- * @type Routes
- */
 const appRoutes: Routes = [
   ...homeOutletRoutes,
   ...adminOutletRoutes

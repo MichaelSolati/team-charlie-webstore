@@ -3,24 +3,17 @@ import { Router } from "@angular/router";
 import { Subscription } from 'rxjs/Subscription';
 import { UserService } from "/imports/app/shared/services/user.service";
 
-import template from "./homeNavbar.component.html";
+import template from "./home-navbar.component.html";
 
-/**
-* Navbar component for routes in home outlet.
-* @class HomeNavbar
-* @constructor
-*/
 @Component({
-  selector: "home-navbar",
-  template: template,
+  selector: "app-home-navbar",
+  template: template
 })
-export class HomeNavbar implements OnInit, OnDestroy {
+export class HomeNavbarComponent implements OnInit, OnDestroy {
   private search: string = "";
   private subscription: Subscription;
   private user: any = null;
-  /**
-  * @method constructor
-  */
+
   constructor (private router: Router, private userService: UserService) { }
 
   ngOnInit() {

@@ -9,11 +9,6 @@ import { Item } from "/imports/app/shared/interfaces/item";
 
 import template from "./search.component.html";
 
-/**
-* Page to view an item.
-* @class ItemPageComponent
-* @constructor
-*/
 @Component({
   selector: "app-search",
   template: template
@@ -23,14 +18,9 @@ export class SearchComponent implements OnInit, OnDestroy {
   private itemsSub: Subscription;
   private searchQuery: Subscription;
   private query: ReactiveVar<string> = new ReactiveVar("");
-  /**
-  * @method constructor
-  */
+
   constructor (private route: ActivatedRoute, private router: Router) { }
-  /**
-  * Subscribes to item.
-  * @method ngOnInit
-  */
+
   ngOnInit() {
     this.searchQuery = this.route.params.subscribe((params) => {
       this.query.set(decodeURI(params.item));
@@ -43,10 +33,7 @@ export class SearchComponent implements OnInit, OnDestroy {
       });
     });
   }
-  /**
-  * Kills subscriptions on destruction of component
-  * @method ngOnInit
-  */
+
   ngOnDestroy() {
     this.searchQuery.unsubscribe();
     this.itemsSub.unsubscribe();

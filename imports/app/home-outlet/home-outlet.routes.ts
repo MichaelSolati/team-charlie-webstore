@@ -3,31 +3,28 @@ import { Routes }  from "@angular/router";
 import { ActivateGuard } from "/imports/app/shared/services/activate.service";
 import { DeactivateGuard } from "/imports/app/shared/services/deactivate.service";
 
-import { HomeOutlet } from "./homeOutlet.component";
-import { Home } from "/imports/app/home/home.component";
+import { HomeOutletComponent } from "./home-outlet.component";
+import { HomeComponent } from "/imports/app/home/home.component";
 import { SearchComponent } from "/imports/app/search/search.component";
 import { AccountComponent } from "/imports/app/account/account.component";
-import { LoginPage } from "/imports/app/loginPage/loginPage.component";
-import { HomeNavbar } from "/imports/app/homeNavbar/homeNavbar.component";
+import { LoginPageComponent } from "/imports/app/login-page/login-page.component";
+import { HomeNavbarComponent } from "/imports/app/home-navbar/home-navbar.component";
 import { ItemPageComponent } from "/imports/app/item-page/item-page.component";
 import { LoginFormComponent } from "/imports/app/loginform/loginform.component";
 import { ShippingComponent } from "/imports/app/shipping/shipping.component";
 import { PaymentComponent } from "/imports/app/paymentmethod/paymentmethod.component";
+import { CheckoutComponent } from "/imports/app/checkout/checkout.component";
+import { CartComponent } from "/imports/app/cart/cart.component";
 
-/**
- * Routes for Home parent component.
- * @property homeOutletRoutes
- * @type Routes
- */
 export const homeOutletRoutes: Routes = [{
   path: "",
-  component: HomeOutlet,
+  component: HomeOutletComponent,
   children: [{
     path: "",
-    component: Home
+    component: HomeComponent
   }, {
     path: "log-in",
-    component: LoginPage,
+    component: LoginPageComponent,
     canActivate: [DeactivateGuard]
   }, {
     path: "item/:itemId",
@@ -48,18 +45,28 @@ export const homeOutletRoutes: Routes = [{
     path: "my-account",
     component: AccountComponent,
     canActivate: [ActivateGuard]
+  }, {
+    path: "checkout",
+    component: CheckoutComponent,
+    canActivate: [ActivateGuard]
+  }, {
+    path: "cart",
+    component: CartComponent,
+    canActivate: [ActivateGuard]
   }]
 }];
 
 export const homeOutletComponents: Array<any> = [
-  HomeOutlet,
-  Home,
-  LoginPage,
-  HomeNavbar,
+  HomeOutletComponent,
+  HomeComponent,
+  LoginPageComponent,
+  HomeNavbarComponent,
   ItemPageComponent,
   LoginFormComponent,
   ShippingComponent,
   PaymentComponent,
   SearchComponent,
-  AccountComponent
+  AccountComponent,
+  CheckoutComponent,
+  CartComponent
 ];

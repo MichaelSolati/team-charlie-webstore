@@ -8,28 +8,16 @@ import { Item } from "/imports/app/shared/interfaces/item";
 
 import template from "./home.component.html";
 
-/**
-* Component for Index page.
-* @class Home
-* @constructor
-*/
 @Component({
   selector: "home",
-  template: template,
+  template: template
 })
-export class Home implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit, OnDestroy {
   private items = [];
   private itemsSub: Subscription;
-  /**
-  * @method constructor
-  */
-  constructor () {
 
-  }
-  /**
-  * Subscribes to 6 random items.
-  * @method ngOnInit
-  */
+  constructor () { }
+
   ngOnInit() {
     this.itemsSub = MeteorObservable.subscribe('items.fireDeals').subscribe(() => {
       MeteorObservable.autorun().subscribe(() => {
@@ -37,10 +25,7 @@ export class Home implements OnInit, OnDestroy {
       });
     });
   }
-  /**
-  * Kills subscriptions on destruction of component
-  * @method ngOnInit
-  */
+
   ngOnDestroy() {
     this.itemsSub.unsubscribe();
   }

@@ -1,7 +1,7 @@
 import { Routes }  from "@angular/router";
 
-import { AdminOutlet } from "./adminOutlet.component";
-import { AdminHome } from "/imports/app/adminHome/adminHome.component";
+import { AdminOutletComponent } from "./admin-outlet.component";
+import { AdminHomeComponent } from "/imports/app/admin-home/admin-home.component";
 import { AdminSearchComponent } from "/imports/app/admin-search/admin-search.component";
 import { AdminNavbarComponent } from "/imports/app/admin-navbar/admin-navbar.component";
 import { UpsertItemComponent } from "/imports/app/upsert-item/upsert-item.component";
@@ -13,10 +13,10 @@ import { UpsertItemComponent } from "/imports/app/upsert-item/upsert-item.compon
  */
 export const adminOutletRoutes: Routes = [{
   path: "admin",
-  component: AdminOutlet,
+  component: AdminOutletComponent,
   children: [{
     path: "",
-    component: AdminHome
+    component: AdminHomeComponent
   }, {
     path: "search",
     component: AdminSearchComponent
@@ -30,8 +30,8 @@ export const adminOutletRoutes: Routes = [{
 }];
 
 export const adminOutletComponents: Array<any> = [
-  AdminOutlet,
-  AdminHome,
+  AdminOutletComponent,
+  AdminHomeComponent,
   AdminNavbarComponent,
   UpsertItemComponent,
   AdminSearchComponent
