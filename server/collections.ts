@@ -4,7 +4,7 @@ var baconipsum = require('baconipsum');
 var vgng = require('video-game-name-generator');
 
 import "/imports/api/items/index.ts";
-import { Cart } from "/imports/api/cart/collection";
+import "/imports/api/cart/index.ts";
 import { Items } from "/imports/api/items/collection";
 import { Item } from "/imports/app/shared/interfaces/item";
 

@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { MeteorObservable } from 'meteor-rxjs';
 import { Meteor } from "meteor/meteor";
 
+import { UserService } from "/imports/app/shared/services/user.service";
 import { Items } from "/imports/api/items/collection";
 import { Item } from "/imports/app/shared/interfaces/item";
 
@@ -24,10 +25,12 @@ export class ItemPageComponent implements OnInit, OnDestroy {
   private itemId: string;
   private itemIdSub: Subscription;
   private itemSub: Subscription;
+  private user: any;
+  private userSub: Subscription;
   /**
   * @method constructor
   */
-  constructor (private route: ActivatedRoute, private router: Router) { }
+  constructor (private route: ActivatedRoute, private router: Router, private userService: UserService) { }
   /**
   * Subscribes to item.
   * @method ngOnInit
@@ -46,6 +49,10 @@ export class ItemPageComponent implements OnInit, OnDestroy {
         });
       });
     });
+
+    this.userSub = this.userService.getUser().subscribe((user) => {
+      this.user = user;
+    });
   }
   /**
   * Kills subscriptions on destruction of component
@@ -54,15 +61,20 @@ export class ItemPageComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.itemIdSub.unsubscribe();
     this.itemSub.unsubscribe();
+    this.userSub.unsubscribe();
   }
 
   private addToCart() {
-    Meteor.call("cart.add", this.item, (err, success) => {
-      if (err) {
-        console.log(err);
-      } else {
-        this.router.navigate(["/", "cart"]);
-      }
-    });
+    if(this.user) {
+      Meteor.call("cart.add", this.item, (err, success) => {
+        if (err) {
+          console.log(err);
+        } else {
+          this.router.navigate(["/", "cart"]);
+        }
+      });
+    } else {
+      this.router.navigate(["/", "log-in"]);
+    }
   }
 }
