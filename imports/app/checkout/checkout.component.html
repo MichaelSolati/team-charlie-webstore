@@ -1,1 +1,48 @@
-<h1><b>template</b></h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 class="text-left"><b>Checkout</b></h1>
+      <button [routerLink]="['/','cart']" class="btn btn-info navbar-btn">Back to Cart</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <app-payment></app-payment>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <app-shipping></app-shipping>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+        <div class="row">
+          <section class="container" id="checkout-items">
+            <div class="list-group">
+              <p *ngFor="let item of cart"  class="list-group-item">Item: {{item.name}} Price: {{item.price | currency: 'USD':true}} Quantity: {{item.quantity}}</p>
+            </div>
+          </section>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+        <button [routerLink]="['/','cart']" class="btn btn-info navbar-btn">Back to Cart</button>
+    </div>
+  </div>
+  <div  div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <h3 class="text-left"><b>Total Price</b></h3>
+      <h3 class="text-left"><b>{{total | currency: 'USD':true}}</b></h3>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <h3 class="text-left"><b>Shipping Option</b></h3>
+      <h3 class="text-left"><b>Shipping Option Placeholder</b></h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-sm-2">
+      <button type="submit" [routerLink]="['/','my-account']" class="btn btn-info navbar-btn">Submit Order</button>
+    </div>
+  </div>
+</div>
