@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from 'rxjs/Subscription';
 import { MeteorObservable } from 'meteor-rxjs';
+import { Meteor } from "meteor/meteor";
 
 import { Items } from "/imports/api/items/collection";
 import { Item } from "/imports/app/shared/interfaces/item";
@@ -19,14 +20,14 @@ import template from "./item-page.component.html";
 })
 export class ItemPageComponent implements OnInit, OnDestroy {
   private item: Item;
-  private itemFound: boolean = false
+  private itemFound: boolean = false;
   private itemId: string;
   private itemIdSub: Subscription;
   private itemSub: Subscription;
   /**
   * @method constructor
   */
-  constructor (private route: ActivatedRoute) { }
+  constructor (private route: ActivatedRoute, private router: Router) { }
   /**
   * Subscribes to item.
   * @method ngOnInit
@@ -53,5 +54,15 @@ export class ItemPageComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.itemIdSub.unsubscribe();
     this.itemSub.unsubscribe();
+  }
+
+  private addToCart() {
+    Meteor.call("cart.add", this.item, (err, success) => {
+      if (err) {
+        console.log(err);
+      } else {
+        this.router.navigate(["/", "cart"]);
+      }
+    });
   }
 }
