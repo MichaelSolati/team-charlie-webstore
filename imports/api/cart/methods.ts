@@ -18,7 +18,7 @@ Meteor.methods({
   },
   "cart.remove"(itemId: string) {
     try {
-      return Cart.remove(itemId)
+      return Cart.remove(itemId);
     } catch (e) {
       throw new Meteor.Error(e.reason);
     }

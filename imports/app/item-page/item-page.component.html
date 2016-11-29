@@ -8,6 +8,7 @@
           <p>About: {{item.description}}</p>
           <h5 class="text-right">Quantity: {{item.quantity}} available! </h5>
           <h5 class="text-right">Only: {{item.price | currency:'USD':true}} each </h5>
+          <button type="button" name="button" (click)="addToCart()">Add To Cart</button>
           </div>
       </div>
       <div class="panel panel-warning">
