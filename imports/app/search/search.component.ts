@@ -23,7 +23,11 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.searchQuery = this.route.params.subscribe((params) => {
-      this.query.set(decodeURI(params.item));
+      if (params.item) {
+        this.query.set(decodeURI(params.item));
+      } else {
+        this.query.set("");
+      }
       MeteorObservable.autorun().subscribe(() => {
         this.itemsSub = MeteorObservable.subscribe("items.search", this.query.get()).subscribe(() => {
           MeteorObservable.autorun().subscribe(() => {

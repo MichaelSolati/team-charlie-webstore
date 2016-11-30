@@ -10,21 +10,26 @@ import template from "./home-navbar.component.html";
   template: template
 })
 export class HomeNavbarComponent implements OnInit, OnDestroy {
+  private isAdmin: boolean = false;
+  private isAdminSubscription: Subscription;
   private search: string = "";
-  private subscription: Subscription;
   private user: any = null;
+  private userSubscription: Subscription;
 
   constructor (private router: Router, private userService: UserService) { }
 
   ngOnInit() {
-    this.subscription = this.userService.getUser().subscribe((user) => {
+    this.isAdminSubscription = this.userService.getAdminStatus().subscribe((status) => {
+      this.isAdmin = status;
+    });
+    this.userSubscription = this.userService.getUser().subscribe((user) => {
       this.user = user;
-      console.log(this.user);
     });
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.isAdminSubscription.unsubscribe();
+    this.userSubscription.unsubscribe();
   }
 
 

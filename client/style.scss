@@ -14,3 +14,15 @@ textarea {
 a {
     text-decoration: none !important;
 }
+
+.danger {
+    color: #fff;
+    background-color: red;
+    border-color: red;
+}
+
+.danger:hover, .danger:active  {
+    color: #fff;
+    background-color: #a94442;
+    border-color: #a94442;
+}

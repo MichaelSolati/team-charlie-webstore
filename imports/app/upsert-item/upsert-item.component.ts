@@ -6,6 +6,7 @@ import { MeteorObservable } from 'meteor-rxjs';
 
 import template from "./upsert-item.component.html";
 
+import { Categories } from "/imports/api/categories/collection";
 import { Items } from "/imports/api/items/collection";
 import { Item } from "/imports/app/shared/interfaces/item";
 
@@ -14,6 +15,8 @@ import { Item } from "/imports/app/shared/interfaces/item";
   template: template
 })
 export class UpsertItemComponent implements OnInit, OnDestroy {
+  private categories: Array<any> = [];
+  private categorySub: Subscription;
   private item: Item;
   private itemFound: boolean = false;
   private itemId: string;
@@ -21,7 +24,7 @@ export class UpsertItemComponent implements OnInit, OnDestroy {
   private itemSub: Subscription;
 
   constructor (private route: ActivatedRoute, private router: Router) {
-    this.item = new Item(null,null,null,null);
+    this.item = new Item(null,null,null,null,null);
   }
 
   ngOnInit() {
@@ -36,11 +39,20 @@ export class UpsertItemComponent implements OnInit, OnDestroy {
           });
         });
     });
+
+    MeteorObservable.autorun().subscribe(() => {
+      this.categorySub = MeteorObservable.subscribe("categories").subscribe(() => {
+        MeteorObservable.autorun().subscribe(() => {
+          this.categories = Categories.find().fetch();
+        });
+      });
+    });
   }
 
   ngOnDestroy() {
     this.itemIdSub.unsubscribe();
     this.itemSub.unsubscribe();
+    this.categorySub.unsubscribe();
   }
 
   private removeItem(itemId: string): void {

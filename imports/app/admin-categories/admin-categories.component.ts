@@ -35,14 +35,28 @@ export class AdminCategoriesComponent implements OnInit, OnDestroy {
     this.categorySub.unsubscribe();
   }
 
+  private addCategory(categoryId: string) {
+    Meteor.call("categories.add", this.query.get(), (err, success) => {
+      if (err) {
+        Bert.alert( "Could not add category... ☹️", 'danger', 'growl-top-right' );
+      } else {
+        Bert.alert( "Category Added!!! 😊", 'success', 'growl-top-right' );
+      }
+    });
+  }
+
   private deleteCategory(categoryId: string) {
     Meteor.call("categories.remove", categoryId, (err, success) => {
-
-    })
+      if (err) {
+        Bert.alert( "Could not remove category... ☹️", 'danger', 'growl-top-right' );
+      } else {
+        Bert.alert( "Category Removed!!! 😊", 'success', 'growl-top-right' );
+      }
+    });
   }
 
   private runSearch(event:any) {
     let value = event.target.value;
-    this.query.set(value)
+    this.query.set(value);
   }
 }

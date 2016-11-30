@@ -4,36 +4,31 @@ import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from '@angular/router';
 import { METEOR_PROVIDERS } from 'angular2-meteor';
 
-// Add new components like below
-import {TemplateComponent} from './template/template.component'
-
 import { AppComponent } from "./app.component";
 
 import { appRouting, appComponents } from "./app.routes";
-import { UserService } from "./shared/services/user.service";
+import { CategoryPipe } from "/imports/app/shared/pipes/category.pipe";
+import { UserService } from "/imports/app/shared/services/user.service";
 import { ActivateGuard } from "/imports/app/shared/services/activate.service";
+import { AdminGuard } from "/imports/app/shared/services/admin.service";
 import { DeactivateGuard } from "/imports/app/shared/services/deactivate.service";
 
-/**
-* Declares an NgModule. Declares all dependencies as well as which component to bootstrap.
-* @class AppModule
-*/
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     appRouting
   ],
-  //add new components here
   declarations: [
     AppComponent,
-    ...appComponents,
-    TemplateComponent
+    CategoryPipe,
+    ...appComponents
   ],
   providers: [
     METEOR_PROVIDERS,
     UserService,
     ActivateGuard,
+    AdminGuard,
     DeactivateGuard
   ],
   bootstrap: [AppComponent]

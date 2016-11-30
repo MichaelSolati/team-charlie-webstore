@@ -3,28 +3,28 @@ import { Meteor } from "meteor/meteor";
 import { MeteorComponent } from "angular2-meteor";
 import { BehaviorSubject } from "rxjs";
 
-/**
-* @class UserService
-* @constructor
-* @extends MeteorComponent
-*/
 @Injectable()
 export class UserService extends MeteorComponent {
+  private isAdmin: BehaviorSubject<any> = new BehaviorSubject<any>(false);
   private user: BehaviorSubject<any> = new BehaviorSubject<any>(false);
-  /**
-  * @method constructor
-  */
+
   constructor() {
     super();
+    this.isAdmin.next(false);
     this.user.next(false);
     this.autorun(() => {
       if (Meteor.user()) {
         this.user.next(Meteor.user());
-        // console.log(Meteor.user())
+        this.isAdmin.next(Roles.userIsInRole(Meteor.userId(), 'admin'));
       } else {
         this.user.next(false);
+        this.isAdmin.next(Roles.userIsInRole(Meteor.userId(), 'admin'));
       }
     });
+  }
+
+  public getAdminStatus() {
+    return this.isAdmin;
   }
 
   public getUser() {

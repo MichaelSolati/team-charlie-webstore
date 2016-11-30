@@ -1,6 +1,9 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import { UserService } from "/imports/app/shared/services/user.service";
 import { Subscription } from 'rxjs/Subscription';
+import { Meteor } from "meteor/meteor";
+
+
+import { UserService } from "/imports/app/shared/services/user.service";
 
 import template from "./account.component.html";
 
@@ -9,18 +12,28 @@ import template from "./account.component.html";
   template: template
 })
 export class AccountComponent implements OnInit, OnDestroy {
-  private user: any;
-  private userSub: Subscription;
+  private isAdmin: boolean = false;
+  private isAdminSubscription: Subscription;
 
   constructor (private userService: UserService) { }
 
   ngOnInit() {
-    this.userSub = this.userService.getUser().subscribe((user) => {
-      this.user = user;
+    this.isAdminSubscription = this.userService.getAdminStatus().subscribe((status) => {
+      this.isAdmin = status;
     });
   }
 
   ngOnDestroy() {
-    this.userSub.unsubscribe();
+    this.isAdminSubscription.unsubscribe();
+  }
+
+  private toggleAdminStatus() {
+    Meteor.call("admin.toggle", (err, success) => {
+      if (err) {
+        Bert.alert("Could not change admin status", 'danger', 'growl-top-right');
+      } else {
+        Bert.alert(success, 'success', 'growl-top-right');
+      }
+    })
   }
 }

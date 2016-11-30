@@ -13,6 +13,8 @@
 <br>
 <section class="container" id="search-results">
   <div class="list-group">
-    <a *ngFor="let item of search" [routerLink]="['/admin', 'item', item._id]" class="list-group-item">{{item.name}}</a>
+    <a *ngFor="let item of search" [routerLink]="['/admin', 'item', item._id]" class="list-group-item">
+      {{item.name}} - {{item.category | category}} - Price: {{item.price | currency:'USD':true}} - Quantity: {{item.quantity}}
+    </a>
   </div>
 </section>
