@@ -34,4 +34,14 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.cartSub.unsubscribe();
   }
+
+  private order() {
+    let order = {
+      items: this.cart,
+      total: this.total,
+      orderDate: new Date()
+    }
+
+    console.log(order);
+  }
 }
