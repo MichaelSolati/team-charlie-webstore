@@ -2,18 +2,29 @@ import { Meteor } from "meteor/meteor";
 import { Cart } from "./collection";
 
 import { Item } from "/imports/app/shared/interfaces/item";
+import { Items } from "/imports/api/items/collection";
 
 Meteor.methods({
   "cart.add"(item: Item) {
     try {
-      let existing = Cart.findOne({user: this.userId, item: item.item});
+      let itemQuery = item._id;
+
+      if (item.item) {
+        itemQuery = item.item;
+      }
+
+      let existing = Cart.findOne({user: this.userId, item: itemQuery});
+
       if (existing) {
-        let id = existing._id;
-        delete existing._id;
+        if (existing.quantity < Items.findOne(itemQuery).quantity) {
+          let id = existing._id;
+          delete existing._id;
+          existing.quantity++;
 
-        existing.quantity++;
-
-        return Cart.upsert({_id: id}, {$set: existing});
+          return Cart.upsert({_id: id}, {$set: existing});
+        } else {
+          throw new Meteor.Error("Can't Add Anymore To Cart");
+        }
       } else {
         item.item = item._id;
         item.user = this.userId;
@@ -24,7 +35,7 @@ Meteor.methods({
         return Cart.insert(item);
       }
     } catch (e) {
-      throw new Meteor.Error(e.reason);
+      throw new Meteor.Error(e.message);
     }
   },
   "cart.remove"(itemId: string) {
@@ -42,7 +53,7 @@ Meteor.methods({
       }
 
     } catch (e) {
-      throw new Meteor.Error(e.reason);
+      throw new Meteor.Error(e.message);
     }
   }
 });

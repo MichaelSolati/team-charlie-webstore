@@ -13,6 +13,7 @@ export class HomeNavbarComponent implements OnInit, OnDestroy {
   private isAdmin: boolean = false;
   private isAdminSubscription: Subscription;
   private search: string = "";
+  private showDrop: boolean = false;
   private user: any = null;
   private userSubscription: Subscription;
 
@@ -32,9 +33,9 @@ export class HomeNavbarComponent implements OnInit, OnDestroy {
     this.userSubscription.unsubscribe();
   }
 
-
   private searchItems(): void{
     let search = encodeURI(this.search);
+    this.toggleNav();
     this.router.navigate(['search', search]);
   }
 
@@ -46,6 +47,10 @@ export class HomeNavbarComponent implements OnInit, OnDestroy {
         Bert.alert("Good riddance!", "success", "growl-top-right");
         this.router.navigate(['/']);
       }
-    })
+    });
+  }
+
+  private toggleNav() {
+    this.showDrop = !this.showDrop;
   }
 }

@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { MeteorObservable } from 'meteor-rxjs';
 import { ReactiveVar } from "meteor/reactive-var";
 
+import { Categories } from "/imports/api/categories/collection";
 import { Items } from "/imports/api/items/collection";
 import { Item } from "/imports/app/shared/interfaces/item";
 
@@ -14,8 +15,12 @@ import template from "./search.component.html";
   template: template
 })
 export class SearchComponent implements OnInit, OnDestroy {
-  private search: Array<Item> = [];
+  private categories: Array<any> = [];
+  private categorySub: Subscription;
+  private category: ReactiveVar<string> = new ReactiveVar("");
   private itemsSub: Subscription;
+  private priceSort: ReactiveVar<string> = new ReactiveVar(null);
+  private search: Array<Item> = [];
   private searchQuery: Subscription;
   private query: ReactiveVar<string> = new ReactiveVar("");
 
@@ -29,10 +34,22 @@ export class SearchComponent implements OnInit, OnDestroy {
         this.query.set("");
       }
       MeteorObservable.autorun().subscribe(() => {
-        this.itemsSub = MeteorObservable.subscribe("items.search", this.query.get()).subscribe(() => {
+        this.itemsSub = MeteorObservable.subscribe("items.search", this.query.get(), this.category.get()).subscribe(() => {
           MeteorObservable.autorun().subscribe(() => {
-            this.search = Items.find().fetch();
+            if (this.priceSort.get()) {
+              this.search = Items.find({}, {sort: {price: this.priceSort.get()}}).fetch();
+            } else {
+              this.search = Items.find({}).fetch();
+            }
           });
+        });
+      });
+    });
+
+    MeteorObservable.autorun().subscribe(() => {
+      this.categorySub = MeteorObservable.subscribe("categories").subscribe(() => {
+        MeteorObservable.autorun().subscribe(() => {
+          this.categories = Categories.find().fetch();
         });
       });
     });
@@ -41,6 +58,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.searchQuery.unsubscribe();
     this.itemsSub.unsubscribe();
+    this.categorySub.unsubscribe();
   }
 
   private newSearch() {
@@ -48,8 +66,22 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.router.navigate(['search', search]);
   }
 
-  private runSearch(event:any) {
-    let value = event.target.value;
-    this.query.set(value)
+  private setCategory(category: string) {
+    this.category.set(category)
+  }
+
+  private sortPrices() {
+    let sort = this.priceSort.get();
+    if (sort === null) {
+      this.priceSort.set(-1);
+    } else if (sort === -1) {
+      this.priceSort.set(1);
+    } else {
+      this.priceSort.set(null);
+    }
+  }
+
+  private runSearch(query: string) {
+    this.query.set(query)
   }
 }

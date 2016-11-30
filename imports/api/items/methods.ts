@@ -14,7 +14,7 @@ Meteor.methods({
         throw new Meteor.Error("MUST BE AN ADMIN");
       }
     } catch (e) {
-      throw new Meteor.Error(e.reason);
+      throw new Meteor.Error(e.message);
     }
   },
   "items.remove"(itemId: string) {
@@ -25,7 +25,7 @@ Meteor.methods({
         throw new Meteor.Error("MUST BE AN ADMIN");
       }
     } catch (e) {
-      throw new Meteor.Error(e.reason);
+      throw new Meteor.Error(e.message);
     }
   }
 });

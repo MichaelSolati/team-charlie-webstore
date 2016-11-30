@@ -2,29 +2,54 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search for..." value="{{query.get()}}" (keyup)="runSearch($event)">
+        <input type="text" class="form-control" placeholder="Search for..." value="{{query.get()}}" (keyup)="runSearch($event.target.value)">
         <span class="input-group-btn">
-          <button class="btn btn-default" (click)="newSearch()" type="button">Go!</button>
+          <button class="btn btn-info" (click)="newSearch()" type="button">Go!</button>
         </span>
+      </div>
+    </div>
+    <div class="col-xs-12 mt">
+      <div class="form-group">
+        <label class="control-label col-xs-2" for="category">Category:</label>
+        <div class="col-xs-10">
+          <select class="form-control" name="category" (change)="setCategory($event.target.value)">
+            <option value="">
+              NO CATEGORY
+            </option>
+            <option *ngFor="let category of categories" value="{{category._id}}">
+              {{category.name}}
+            </option>
+          </select>
+        </div>
       </div>
     </div>
   </div>
 </section>
 <br>
 <section class="container" id="search-results">
-  <div class="row">
-    <div *ngFor="let item of search" class="col-xs-12 col-sm-6 col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-        <a [routerLink]="['/item', item._id]">
-          <h3 class="panel-title">{{item.name}}</h3>
-        </a>
-        </div>
-        <div class="panel-body">
-          <p>Only: {{item.price | currency:'USD':true}}</p>
-          <a [routerLink]="['/item', item._id]">View Item</a>
-        </div>
-      </div>
-    </div>
-  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th (click)="sortPrices()">
+          Price
+          <span *ngIf="priceSort.get() === 1" class="glyphicon glyphicon-sort-by-attributes" aria-hidden="true"></span>
+          <span *ngIf="priceSort.get() === -1" class="glyphicon glyphicon-sort-by-attributes-alt" aria-hidden="true"></span>
+        </th>
+        <th>Category</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of search">
+        <td>{{item.name}}</td>
+        <td>{{item.price | currency:'USD':true}}</td>
+        <td>{{item.category | category}}</td>
+        <td>
+          <button class="btn btn-info" [routerLink]="['/item', item._id]" type="button">View Item</button>
+        </td>
+      </tr>
+    </tbody>
+  </tbody>
+</table>
 </section>

@@ -6,8 +6,9 @@
       </div>
       <div class="panel-body">
         <p>About: {{item.description}}</p>
-        <h5 class="text-right">Quantity: {{item.quantity}} available! </h5>
-        <h5 class="text-right">Only: {{item.price | currency:'USD':true}} each </h5>
+        <h5 *ngIf="(item.quantity > 0)" class="text-right">Quantity: {{item.quantity}} available!</h5>
+        <h5 *ngIf="!(item.quantity > 0)" class="text-right">OUT OF STOCK</h5>
+        <h5 class="text-right">Only: {{item.price | currency:'USD':true}} each</h5>
         <h5 class="text-right">{{item.category | category}}</h5>
         <button (click)="addToCart()" type="button" class="btn btn-info navbar-btn">Add To Cart</button>
       </div>

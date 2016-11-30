@@ -32,10 +32,22 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   private add(item: any) {
-    Meteor.call("cart.add", item);
+    Meteor.call("cart.add", item, (err, success) => {
+      if (err) {
+        Bert.alert(err.message, 'danger', 'growl-top-right');
+      } else {
+        Bert.alert("One added to cart", 'success', 'growl-top-right');
+      }
+    });
   }
 
   private remove(itemId: string) {
-    Meteor.call("cart.remove", itemId);
+    Meteor.call("cart.remove", itemId, (err, success) => {
+      if (err) {
+        Bert.alert(err.message, 'danger', 'growl-top-right');
+      } else {
+        Bert.alert("One removed from cart", 'success', 'growl-top-right');
+      }
+    });
   }
 }

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+      <button (click)="toggleNav()" type="button" class="navbar-toggle collapsed">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -10,13 +10,13 @@
       <a class="navbar-brand" [routerLink]="['/']">Team Charlie - You Buy Us!</a>
     </div>
 
-    <div class="collapse navbar-collapse" id="navbar-collapse">
+    <div [ngClass]="{ 'in': showDrop }" class="collapse navbar-collapse" id="navbar-collapse">
       <ul class="nav navbar-nav navbar-left">
-        <li *ngIf="user" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/','cart']">Cart</a></li>
-        <li *ngIf="user" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/','my-account']">Account</a></li>
-        <li *ngIf="isAdmin" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/','admin']">Admin</a></li>
-        <li *ngIf="!user" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/','log-in']">Log In</a></li>
-        <li *ngIf="user"><a (click)="signOut()">Log Out</a></li>
+        <li (click)="toggleNav()" *ngIf="user" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/','cart']">Cart</a></li>
+        <li (click)="toggleNav()" *ngIf="user" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/','my-account']">Account</a></li>
+        <li (click)="toggleNav()" *ngIf="isAdmin" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/','admin']">Admin</a></li>
+        <li (click)="toggleNav()" *ngIf="!user" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/','log-in']">Log In</a></li>
+        <li (click)="toggleNav()" *ngIf="user"><a (click)="signOut()">Log Out</a></li>
       </ul>
       <form class="navbar-form navbar-right">
         <div class="form-group">

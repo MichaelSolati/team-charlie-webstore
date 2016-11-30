@@ -4,17 +4,17 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from 'rxjs/Subscription';
 import { MeteorObservable } from 'meteor-rxjs';
 
-import template from "./upsert-item.component.html";
+import template from "./admin-item.component.html";
 
 import { Categories } from "/imports/api/categories/collection";
 import { Items } from "/imports/api/items/collection";
 import { Item } from "/imports/app/shared/interfaces/item";
 
 @Component({
-  selector: "app-upsert-item",
+  selector: "app-admin-item",
   template: template
 })
-export class UpsertItemComponent implements OnInit, OnDestroy {
+export class AdminItemComponent implements OnInit, OnDestroy {
   private categories: Array<any> = [];
   private categorySub: Subscription;
   private item: Item;

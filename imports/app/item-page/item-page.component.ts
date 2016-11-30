@@ -5,21 +5,19 @@ import { MeteorObservable } from 'meteor-rxjs';
 import { Meteor } from "meteor/meteor";
 
 import { UserService } from "/imports/app/shared/services/user.service";
+import { Cart } from "/imports/api/cart/collection";
 import { Items } from "/imports/api/items/collection";
 import { Item } from "/imports/app/shared/interfaces/item";
 
 import template from "./item-page.component.html";
 
-/**
-* Page to view an item.
-* @class ItemPageComponent
-* @constructor
-*/
 @Component({
   selector: "app-item-page",
   template: template
 })
 export class ItemPageComponent implements OnInit, OnDestroy {
+  private cart: Array<any> = [];
+  private cartSub: Subscription;
   private item: Item;
   private itemFound: boolean = false;
   private itemId: string;
@@ -27,14 +25,9 @@ export class ItemPageComponent implements OnInit, OnDestroy {
   private itemSub: Subscription;
   private user: any;
   private userSub: Subscription;
-  /**
-  * @method constructor
-  */
+
   constructor (private route: ActivatedRoute, private router: Router, private userService: UserService) { }
-  /**
-  * Subscribes to item.
-  * @method ngOnInit
-  */
+
   ngOnInit() {
     this.itemIdSub = this.route.params.subscribe((params) => {
       this.itemId = params.itemId;
@@ -48,17 +41,24 @@ export class ItemPageComponent implements OnInit, OnDestroy {
           }
         });
       });
+
+      MeteorObservable.autorun().subscribe(() => {
+        let user = Meteor.userId();
+        this.cartSub = MeteorObservable.subscribe("cart.myCart", user).subscribe(() => {
+          MeteorObservable.autorun().subscribe(() => {
+            this.cart = Cart.find().fetch();
+          });
+        });
+      });
     });
 
     this.userSub = this.userService.getUser().subscribe((user) => {
       this.user = user;
     });
   }
-  /**
-  * Kills subscriptions on destruction of component
-  * @method ngOnInit
-  */
+
   ngOnDestroy() {
+    this.cartSub.unsubscribe();
     this.itemIdSub.unsubscribe();
     this.itemSub.unsubscribe();
     this.userSub.unsubscribe();
@@ -68,8 +68,9 @@ export class ItemPageComponent implements OnInit, OnDestroy {
     if(this.user) {
       Meteor.call("cart.add", this.item, (err, success) => {
         if (err) {
-          console.log(err);
+          Bert.alert(err.message, 'danger', 'growl-top-right');
         } else {
+          Bert.alert("Added to cart", 'success', 'growl-top-right');
           this.router.navigate(["/", "cart"]);
         }
       });
