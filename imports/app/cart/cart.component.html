@@ -1,18 +1,25 @@
-<h1 class="text-align: right"><b>Cart</b></h1>
-
-  <section class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let item of cart">
-        <h1>{{item.name}}</h1>
-        <h6>{{item.quantity}}</h6>
-        <p>Only: {{(item.quantity * item.price) | currency:'USD':true}}</p>
-        <p>About: {{item.description}}</p>
-
-        <h4 ><i>Remove Item?</i></h4>
-        <h4><i>Add Item?</i></h4>
-
-        <button (click)="remove(item._id)" type="button" class="btn btn-info navbar-btn">Remove Item</button>
-        <button (click)="add(item)" type="button" class="btn btn-info navbar-btn">Add Another</button>
-      </div>
+<section class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <h1 class="text-align: right"><b>Cart</b></h1>
     </div>
-  </section>
+  </div>
+</section>
+<section class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let item of cart">
+      <h3>{{item.name}}</h3>
+      <h6>Quantity: {{item.quantity}}</h6>
+      <p>Cost: {{(item.quantity * item.price) | currency:'USD':true}}</p>
+      <button (click)="remove(item._id)" type="button" class="btn btn-info navbar-btn">Remove Item</button>
+      <button (click)="add(item)" type="button" class="btn btn-info navbar-btn">Add Another</button>
+    </div>
+  </div>
+</section>
+<section class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <button [routerLink]="['/','checkout']" class="btn btn-primary navbar-btn">Checkout</button>
+    </div>
+  </div>
+</section>
