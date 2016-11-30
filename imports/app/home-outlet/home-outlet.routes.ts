@@ -15,6 +15,8 @@ import { ShippingComponent } from "/imports/app/shipping/shipping.component";
 import { PaymentComponent } from "/imports/app/paymentmethod/paymentmethod.component";
 import { CheckoutComponent } from "/imports/app/checkout/checkout.component";
 import { CartComponent } from "/imports/app/cart/cart.component";
+import { OrdersComponent } from "/imports/app/orders/orders.component";
+import { OrderComponent } from "/imports/app/order/order.component";
 
 export const homeOutletRoutes: Routes = [{
   path: "",
@@ -53,6 +55,10 @@ export const homeOutletRoutes: Routes = [{
     path: "cart",
     component: CartComponent,
     canActivate: [ActivateGuard]
+  }, {
+    path: "order",
+    component: OrderComponent,
+    canActivate: [ActivateGuard]
   }]
 }];
 
@@ -68,5 +74,7 @@ export const homeOutletComponents: Array<any> = [
   SearchComponent,
   AccountComponent,
   CheckoutComponent,
-  CartComponent
+  CartComponent,
+  OrdersComponent,
+  OrderComponent
 ];
