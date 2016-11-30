@@ -5,6 +5,7 @@ export class Item {
     public description?: string,
     public quantity?: number,
     public addedOn?: Date,
+    public category?: string,
     public _id?: string
   ) {
     if (!addedOn) {

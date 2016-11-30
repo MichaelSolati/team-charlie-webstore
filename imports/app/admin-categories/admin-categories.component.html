@@ -1,0 +1,25 @@
+<section class="container" id="search">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search for..." (keyup)="runSearch($event)">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">Go!</button>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+<br>
+<section class="container" id="category-results">
+  <ul class="list-group">
+    <li *ngFor="let category of categories" class="list-group-item">
+      <div class="row">
+        <div class="container">
+          <span class="pull-left">{{category.name}}</span>
+          <button (click)="deleteCategory(category._id)" type="button" class="pull-right btn btn-info navbar-btn">Remove</button>
+        </div>
+      </div>
+    </li>
+  </ul>
+</section>
