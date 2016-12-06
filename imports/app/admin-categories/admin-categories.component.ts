@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { MeteorObservable } from 'meteor-rxjs';
 import { ReactiveVar } from "meteor/reactive-var";
 import { Meteor } from "meteor/meteor";
+declare var Bert: any;
 
 import { Categories } from "/imports/api/categories/collection";
 

@@ -3,6 +3,7 @@ import { Meteor } from "meteor/meteor";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from 'rxjs/Subscription';
 import { MeteorObservable } from 'meteor-rxjs';
+declare var Bert: any;
 
 import template from "./admin-item.component.html";
 

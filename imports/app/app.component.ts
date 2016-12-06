@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { UserService } from "./shared/services/user.service";
+declare var Bert: any;
 
 /**
 * Our main App component.
