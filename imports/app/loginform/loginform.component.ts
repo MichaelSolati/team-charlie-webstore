@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { Accounts } from "meteor/accounts-base";
 import { Meteor } from "meteor/meteor";
 import { Router } from "@angular/router";
+declare var Bert: any;
 
 import template from "./loginform.component.html";
 

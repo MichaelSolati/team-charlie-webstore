@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Subscription } from 'rxjs/Subscription';
 import { Meteor } from "meteor/meteor";
+declare var Bert: any;
 
 
 import { UserService } from "/imports/app/shared/services/user.service";

@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Subscription } from 'rxjs/Subscription';
 import { Meteor } from "meteor/meteor";
 import { MeteorObservable } from 'meteor-rxjs';
+declare var Bert: any;
 
 import { Cart } from "/imports/api/cart/collection";
 

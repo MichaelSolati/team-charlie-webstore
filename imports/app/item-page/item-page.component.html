@@ -4,18 +4,30 @@
       <div class="panel-heading">
         <h2 class="text-center"><B>{{item.name}}</B></h2>
       </div>
-      <div class="panel-body">
-        <p>About: {{item.description}}</p>
-        <h5 *ngIf="(item.quantity > 0)" class="text-right">Quantity: {{item.quantity}} available!</h5>
-        <h5 *ngIf="!(item.quantity > 0)" class="text-right">OUT OF STOCK</h5>
-        <h5 class="text-right">Only: {{item.price | currency:'USD':true}} each</h5>
-        <h5 class="text-right">{{item.category | category}}</h5>
-        <button (click)="addToCart()" type="button" class="btn btn-info navbar-btn">Add To Cart</button>
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+          <h6>Added To Store On: {{item.addedOn | date:'shortDate'}}</h6>
+        </div>
       </div>
-    </div>
-    <div class="panel panel-warning">
-      <div class="panel-heading">
-        <h6>Added To Store On: {{item.addedOn | date:'shortDate'}}</h6>
+      <div class="panel-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6">
+              <img *ngIf="item.image" [src]="item.image.path" class="img-responsive" alt="{{item.name}} Images">
+              <img *ngIf="!(item.image)" src="/images/no-image.png" class="img-responsive" alt="No Image Found">
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <div class="container-fluid text-center">
+                <p class="text-left">About: {{item.description}}</p>
+                <h5 *ngIf="(item.quantity > 0)" class="text-right">Quantity: {{item.quantity}} available!</h5>
+                <h5 *ngIf="!(item.quantity > 0)" class="text-right">OUT OF STOCK</h5>
+                <h5 class="text-right">Only: {{item.price | currency:'USD':true}} each</h5>
+                <h5 class="text-right">{{item.category | category}}</h5>
+                <button (click)="addToCart()" type="button" class="btn btn-info navbar-btn">Add To Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

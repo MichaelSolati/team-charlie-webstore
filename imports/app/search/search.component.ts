@@ -72,9 +72,9 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   private sortPrices() {
     let sort = this.priceSort.get();
-    if (sort === null) {
+    if (sort == null) {
       this.priceSort.set(-1);
-    } else if (sort === -1) {
+    } else if (sort == -1) {
       this.priceSort.set(1);
     } else {
       this.priceSort.set(null);

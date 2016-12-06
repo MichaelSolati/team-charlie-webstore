@@ -64,9 +64,9 @@ export class AdminSearchComponent implements OnInit, OnDestroy {
 
   private sortPrices() {
     let sort = this.priceSort.get();
-    if (sort === null) {
+    if (sort == null) {
       this.priceSort.set(-1);
-    } else if (sort === -1) {
+    } else if (sort == -1) {
       this.priceSort.set(1);
     } else {
       this.priceSort.set(null);
@@ -75,9 +75,9 @@ export class AdminSearchComponent implements OnInit, OnDestroy {
 
   private sortQuantities() {
     let sort = this.quantitySort.get();
-    if (sort === null) {
+    if (sort == null) {
       this.quantitySort.set(-1);
-    } else if (sort === -1) {
+    } else if (sort == -1) {
       this.quantitySort.set(1);
     } else {
       this.quantitySort.set(null);

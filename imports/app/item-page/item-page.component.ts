@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from 'rxjs/Subscription';
 import { MeteorObservable } from 'meteor-rxjs';
 import { Meteor } from "meteor/meteor";
+declare var Bert: any;
 
 import { UserService } from "/imports/app/shared/services/user.service";
 import { Cart } from "/imports/api/cart/collection";
