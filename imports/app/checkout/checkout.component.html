@@ -1,53 +1,66 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12 text-center">
       <h1 class="text-left"><b>Checkout</b></h1>
       <button [routerLink]="['/','cart']" class="btn btn-primary navbar-btn">Back to Cart</button>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12 col-sm-6">
-      <app-payment></app-payment>
-    </div>
-    <div class="col-xs-12 col-sm-6">
-      <app-shipping></app-shipping>
-    </div>
+    <app-payment class="col-xs-12 col-sm-6"></app-payment>
+    <app-shipping class="col-xs-12 col-sm-6"></app-shipping>
   </div>
   <br>
   <div class="row">
-    <div class="col-xs-12 col-sm-6">
-        <div class="row">
-          <section class="container" id="checkout-items">
-            <div class="list-group">
-              <p *ngFor="let item of cart"  class="list-group-item">Item: {{item.name}} Price: {{item.price | currency: 'USD':true}} Quantity: {{item.quantity}}</p>
-            </div>
-          </section>
-        </div>
+    <div class="col-xs-12">
+      <div class="row">
+        <section class="container" id="checkout-items">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Item Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of cart">
+                <td>{{item.name}}</td>
+                <td>{{item.quantity}}</td>
+                <td>{{item.price | currency: 'USD':true}}</td>
+                <td>{{(item.quantity*item.price) | currency: 'USD':true}}</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{total | currency: 'USD':true}}</td>
+              </tr>
+            </tbody>
+          </table>
+      </section>
     </div>
   </div>
-  <div class="row">
-    <div class="col-xs-12 col-sm-6">
-        <button [routerLink]="['/','cart']" class="btn btn-primary navbar-btn">Back to Cart</button>
+</div>
+<div class="row">
+  <div class="col-xs-12 mt">
+    <div class="form-group">
+      <label class="control-label col-xs-2" for="shipping-method">Shipping Method:</label>
+      <div class="col-xs-10">
+        <select class="form-control" name="shipping-method" [(ngModel)]="shippingMethod">
+          <option selected [ngValue]="{option:'7 day',price:0.00}">7 Day - FREE</option>
+          <option [ngValue]="{option:'3 day',price:10.00}">3 Day - $10.00</option>
+          <option [ngValue]="{option:'1 day',price:20.00}">1 Day - $20.00</option>
+        </select>
+      </div>
     </div>
   </div>
-  <div  div class="row">
-    <div class="col-xs-12 col-sm-6">
-      <h3 class="text-left"><b>Total Price</b></h3>
-      <h3 class="text-left"><b>{{total | currency: 'USD':true}}</b></h3>
-    </div>
-    <div class="col-xs-10 col-sm-5">
-      <h3 class="text-left"><b>Shipping Option</b></h3>
-        <div class="radio">
-          <label><input type="radio" name="shipoption" value="option1" checked>Expidited shipping (2 days) $7.99</label>
-          <label><input type="radio" name="shipoption" value="option2">Standard shipping (3-5 days $3.99)</label>
-          <label><input type="radio" name="shipoption" value="option3">Snail Mail shipping (2 weeks Free!)</label>
-        </div>
-    </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 text-center mt">
+    <h5><b>Total Price: {{(total+shippingMethod.price) | currency: 'USD':true}}</b></h5>
+    <button type="submit" (click)="order();" class="btn btn-warning navbar-btn">Submit Order</button>
   </div>
-  <div class="row">
-    <div class="col-xs-2 col-sm-2">
-      <button type="submit" (click)="order();" class="btn btn-warning navbar-btn">Submit Order</button>
-    </div>
-  </div>
-  <br>
+</div>
+<br>
 </div>

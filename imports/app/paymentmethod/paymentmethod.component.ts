@@ -10,9 +10,8 @@ import template from "./paymentmethod.component.html";
 })
 export class PaymentComponent {
   private payment: any = {
-    "ccnumber" : "",
-    "month" : "",
-    "year" : "",
+    "number" : "",
+    "experation" : "",
     "csv" : "",
     "zip" : ""
   };

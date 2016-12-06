@@ -19,9 +19,8 @@ export class LoginFormComponent {
     }
   }
   private isSigningIn: boolean = true;
-  constructor (private router: Router) {
-
-  }
+  constructor (private router: Router) { }
+  
   private signIn() {
     Meteor.loginWithPassword(this.signInForm.email, this.signInForm.password, (error, success) => {
       if (error) {

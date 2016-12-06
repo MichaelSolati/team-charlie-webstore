@@ -1,4 +1,5 @@
 import { Meteor } from "meteor/meteor";
+import * as moment from 'moment';
 
 import { Orders } from "./collection";
 
@@ -6,8 +7,8 @@ if (Meteor.isServer) {
     Meteor.publish("orders.order", (orderId: string) => {
         return Orders.find(orderId);
     });
-    Meteor.publish("orders.search", () => {
-      //const search = { '$regex': '.*' + (itemName || '') + '.*', '$options': 'i' };
-      return Orders.find({}, {limit: 60});
+    Meteor.publish("orders.search", (back: number) => {
+      let date = moment().subtract((back || 365), 'days').calendar();
+      return Orders.find({"orderDate" : { $gte : date }});
     })
 }

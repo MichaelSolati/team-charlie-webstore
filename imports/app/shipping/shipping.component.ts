@@ -10,8 +10,7 @@ import template from "./shipping.component.html";
 })
 export class ShippingComponent {
   private address :any = {
-    "address1":"",
-    "address2":"",
+    "address":"",
     "city":"",
     "state": "",
     "zip":"",
