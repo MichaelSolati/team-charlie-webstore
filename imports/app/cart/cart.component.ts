@@ -15,6 +15,7 @@ import template from "./cart.component.html";
 export class CartComponent implements OnInit, OnDestroy {
   private cart: Array<any> = [];
   private cartSub: Subscription;
+  private total: number = 0;
   constructor () { }
 
   ngOnInit() {
@@ -23,6 +24,10 @@ export class CartComponent implements OnInit, OnDestroy {
       this.cartSub = MeteorObservable.subscribe("cart.myCart", user).subscribe(() => {
         MeteorObservable.autorun().subscribe(() => {
           this.cart = Cart.find().fetch();
+          this.total = 0;
+          for(let i = 0; i < this.cart.length; i++){
+            this.total += (this.cart[i].price * this.cart[i].quantity);
+          }
         });
       });
     });

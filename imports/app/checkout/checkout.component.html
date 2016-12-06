@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 text-center">
-      <h1 class="text-left"><b>Checkout</b></h1>
+      <h1><b>Checkout</b></h1>
       <button [routerLink]="['/','cart']" class="btn btn-primary navbar-btn">Back to Cart</button>
     </div>
   </div>
@@ -59,7 +59,7 @@
 <div class="row">
   <div class="col-xs-12 text-center mt">
     <h5><b>Total Price: {{(total+shippingMethod.price) | currency: 'USD':true}}</b></h5>
-    <button type="submit" (click)="order();" class="btn btn-warning navbar-btn">Submit Order</button>
+    <button [disabled]="processing" type="submit" (click)="order();" class="btn btn-warning navbar-btn">Submit Order</button>
   </div>
 </div>
 <br>

@@ -6,13 +6,36 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let item of cart">
-      <h3>{{item.name}}</h3>
-      <h6>Quantity: {{item.quantity}}</h6>
-      <p>Cost: {{(item.quantity * item.price) | currency:'USD':true}}</p>
-      <button (click)="add(item)" type="button" class="btn btn-info navbar-btn">Add Another</button>
-      <button (click)="remove(item._id)" type="button" class="btn btn-info danger">Remove Item</button>
-    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Item Total</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cart">
+          <td>{{item.name}}</td>
+          <td>{{item.quantity}}</td>
+          <td>{{item.price | currency: 'USD':true}}</td>
+          <td>{{(item.quantity*item.price) | currency: 'USD':true}}</td>
+          <td>
+            <button (click)="add(item)" type="button" class="btn btn-info navbar-btn">Add Another</button>
+            <button (click)="remove(item._id)" type="button" class="btn btn-info danger">Remove Item</button>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>{{total | currency: 'USD':true}}</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
   <div class="row" *ngIf="(cart.length > 0)">
     <div class="col-xs-12 text-center">

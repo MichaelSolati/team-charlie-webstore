@@ -56,7 +56,7 @@ export const homeOutletRoutes: Routes = [{
     component: CartComponent,
     canActivate: [ActivateGuard]
   }, {
-    path: "order",
+    path: "order/:orderId",
     component: OrderComponent,
     canActivate: [ActivateGuard]
   }]

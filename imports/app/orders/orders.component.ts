@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs/Subscription';
 import { MeteorObservable } from 'meteor-rxjs';
 import { ReactiveVar } from "meteor/reactive-var";
 
+import { Orders } from "/imports/api/orders/collection";
+
 import template from "./orders.component.html";
 
 @Component({
@@ -13,27 +15,26 @@ import template from "./orders.component.html";
 export class OrdersComponent implements OnInit, OnDestroy {
   private orders: Array<any> = [];
   private ordersSub: Subscription;
-  private searchQuery: Subscription;
-  private query: ReactiveVar<string> = new ReactiveVar("");
+  private days: ReactiveVar<number> = new ReactiveVar(365);
 
   constructor () { }
 
   ngOnInit() {
-      // MeteorObservable.autorun().subscribe(() => {
-      //   this.ordersSub = MeteorObservable.subscribe("items.search", this.query.get()).subscribe(() => {
-      //     MeteorObservable.autorun().subscribe(() => {
-      //       this.orders = Orders.find().fetch();
-      //     });
-      //   });
-      // });
+      MeteorObservable.autorun().subscribe(() => {
+        this.ordersSub = MeteorObservable.subscribe("orders.all", this.days.get(), Meteor.userId()).subscribe(() => {
+          MeteorObservable.autorun().subscribe(() => {
+            this.orders = Orders.find({}, { sort: { "orderDate": -1 } }).fetch();
+          });
+        });
+      });
   }
 
   ngOnDestroy() {
-    // this.ordersSub.unsubscribe();
+    this.ordersSub.unsubscribe();
   }
 
-  private runSearch(event:any) {
+  private setDate(event:any) {
     let value = event.target.value;
-    this.query.set(value)
+    this.days.set(value)
   }
 }

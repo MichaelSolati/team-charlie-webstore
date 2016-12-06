@@ -55,5 +55,12 @@ Meteor.methods({
     } catch (e) {
       throw new Meteor.Error(e.message);
     }
+  },
+  "cart.empty"() {
+    try {
+      return Cart.remove({"user": this.userId});
+    } catch (e) {
+      throw new Meteor.Error(e.message);
+    }
   }
 });
