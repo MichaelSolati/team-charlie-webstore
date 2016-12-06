@@ -7,6 +7,7 @@ import "/imports/api/admin/index.ts";
 import "/imports/api/cart/index.ts";
 import "/imports/api/categories/index.ts";
 import "/imports/api/items/index.ts";
+import "/imports/api/images/index.ts";
 import "/imports/api/orders/index.ts";
 
 import { Categories } from "/imports/api/categories/collection";
