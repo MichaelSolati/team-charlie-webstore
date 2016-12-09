@@ -6,7 +6,12 @@
   </div>
   <form class="col-xs-12" (ngSubmit)="submit()">
     <div class="form-group col-xs-12">
-      <span class="input-group" for="address1">Street Address</span>
+      <span class="input-group" for="name">Name</span>
+      <input type="text" required class="form-control" name="name" [(ngModel)]="address.name" placeholder="Clark Kent">
+    </div>
+    <br>
+    <div class="form-group col-xs-12">
+      <span class="input-group" for="address">Street Address</span>
       <input type="text" required class="form-control" name="address" [(ngModel)]="address.address" placeholder="15 Main Street">
     </div>
     <br>

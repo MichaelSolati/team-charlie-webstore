@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from 'rxjs/Subscription';
 import { MeteorObservable } from 'meteor-rxjs';
 
+import { Orders } from "/imports/api/orders/collection";
+
 import template from "./order.component.html";
 
 @Component({
@@ -10,22 +12,27 @@ import template from "./order.component.html";
   template: template
 })
 export class OrderComponent implements OnInit, OnDestroy {
-  private order: Array<any> = [];
+  private order: any;
+  private orderIdSub: Subscription;
   private orderSub: Subscription;
 
-  constructor () { }
+  constructor (private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-      // MeteorObservable.autorun().subscribe(() => {
-      //   this.orderSub = MeteorObservable.subscribe("orders.one", this.orderId).subscribe(() => {
-      //     MeteorObservable.autorun().subscribe(() => {
-      //       this.order = Orders.findOne();
-      //     });
-      //   });
-      // });
+    this.orderIdSub = this.route.params.subscribe((params) => {
+      let orderId = params.orderId;
+      this.orderSub = MeteorObservable.subscribe("orders.order", orderId).subscribe(() => {
+        MeteorObservable.autorun().subscribe(() => {
+          if (Orders.findOne({})) {
+            this.order = Orders.findOne({});
+          }
+        });
+      });
+    });
   }
 
   ngOnDestroy() {
-    // this.orderSub.unsubscribe();
+    this.orderIdSub.unsubscribe();
+    this.orderSub.unsubscribe();
   }
 }

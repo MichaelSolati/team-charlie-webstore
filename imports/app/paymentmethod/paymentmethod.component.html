@@ -5,23 +5,23 @@
     </div>
     <form class="col-xs-12" (ngSubmit)="submit()">
       <div class="form-group col-xs-12">
-        <span class="input-group" for="ccnumber">Card number</span>
-        <input type="number" class="form-control" placeholder="0000000000000000" required name="ccnumber" [(ngModel)]="payment.number">
+        <span class="input-group" for="number">Card number <i *ngIf="payment.type" [class]="payment.type" aria-hidden="true"></i></span>
+        <input type="text" class="form-control" placeholder="0000000000000000" required name="number" [(ngModel)]="payment.number">
       </div>
       <br>
       <div class="form-group col-xs-12">
         <span class="input-group" for="month">Experation</span>
-        <input type="month" class="form-control" min="2016-12" placeholder="MM" required name="experation" [(ngModel)]="payment.experation">
+        <input type="month" class="form-control" placeholder="MM" required name="experation" [(ngModel)]="payment.experation">
       </div>
       <br>
       <div class="form-group col-xs-12">
         <span class="input-group" for="csv">CSV</span>
-        <input type="number" class="form-control" placeholder="000" required name="csv" [(ngModel)]="payment.csv">
+        <input type="text" class="form-control" placeholder="000" required name="csv" [(ngModel)]="payment.csv">
       </div>
       <br>
       <div class="form-group col-xs-12">
         <span class="input-group" for="zip">Zip code</span>
-        <input type="number" class="form-control" placeholder="00000" required name="zip" [(ngModel)]="payment.zip">
+        <input type="text" class="form-control" placeholder="00000" required name="zip" [(ngModel)]="payment.zip">
       </div>
       <br>
       <div class="text-center">

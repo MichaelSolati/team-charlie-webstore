@@ -6,11 +6,13 @@
     <div *ngFor="let item of items" class="col-xs-12 col-sm-6 col-md-4">
       <div class="panel panel-default">
         <div class="panel-heading">
-        <a [routerLink]="['/item', item._id]">
-          <h3 class="panel-title">{{item.name}}</h3>
-        </a>
+          <a [routerLink]="['/item', item._id]">
+            <h3 class="panel-title">{{item.name}}</h3>
+          </a>
         </div>
         <div class="panel-body">
+          <img *ngIf="item.image" [src]="item.image.path" class="img-responsive" alt="{{item.name}} Images">
+          <img *ngIf="!(item.image)" src="/images/no-image.png" class="img-responsive" alt="No Image Found">
           <p>Only: {{item.price | currency:'USD':true}}</p>
           <a [routerLink]="['/item', item._id]">View Item</a>
         </div>
