@@ -7,10 +7,12 @@ import { Items } from "/imports/api/items/collection";
 import { Item } from "/imports/app/shared/interfaces/item";
 
 import template from "./home.component.html";
+import style from "./home.component.scss";
 
 @Component({
   selector: "home",
-  template: template
+  template: template,
+  styles: [style]
 })
 export class HomeComponent implements OnInit, OnDestroy {
   private items = [];

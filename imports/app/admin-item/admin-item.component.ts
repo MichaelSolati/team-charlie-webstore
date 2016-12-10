@@ -86,7 +86,6 @@ export class AdminItemComponent implements OnInit, OnDestroy {
     uploadFile(file)
       .then((result) => {
         this.item.image = result;
-        console.log(this.item)
       })
       .catch((error) => {
         Bert.alert(error, 'danger', 'growl-top-right' );
